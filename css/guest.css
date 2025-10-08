@@ -32,12 +32,73 @@ html {
     font-family: 'Inter', sans-serif !important;
 }
 
+/* Beautiful Fonts for Important Text */
+.font-elegant {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+}
+
+.font-signature {
+    font-family: 'Great Vibes', cursive !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px;
+}
+
+.font-serif-elegant {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3px;
+    line-height: 1.6;
+}
+
+/* Enhanced text styling */
+p, small {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.3px;
+}
+
+h1, h2, h3 {
+    letter-spacing: 1px;
+}
+
+/* Special styling for names */
+.name-highlight {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.2em;
+    color: var(--wedding-primary);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
 .img-center-crop {
     width: 13rem;
     height: 13rem;
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
+}
+
+/* Gallery Grid Styles */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.gallery-item img {
+    transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 html[data-bs-theme="dark"] .btn-transparent {

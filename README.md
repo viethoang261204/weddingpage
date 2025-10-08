@@ -1,70 +1,145 @@
-# 💌 Template website undangan pernikahan sederhana
+# 💍 Wedding Website - Tối Giản
 
-![Thumbnail](/assets/images/banner.webp)
+Website thiệp cưới đơn giản, đẹp mắt và dễ sử dụng.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cef32dbf-f26f-4865-84a9-b85a439c9994/deploy-status)](https://app.netlify.com/sites/ulems/deploys)
-[![Hits](https://dikit.my.id/0b3y8q)](https://cie.my.id)
-[![GitHub repo size](https://img.shields.io/github/repo-size/dewanakl/undangan?color=brightgreen)](https://shields.io)
-[![GitHub License](https://img.shields.io/github/license/dewanakl/undangan?color=brightgreen)](https://shields.io)
+## 🚀 Chạy dự án
 
-## 🚀 Demo
-Untuk kamu yang ingin melihat demo terlebih dahulu:
+### Development (Khuyến nghị)
+```bash
+npm install
+npm run dev
+```
+Mở trình duyệt: `http://localhost:8080`
 
-[https://ulems.my.id/?to=Teman teman semua](https://ulems.my.id/?to=Teman%20teman%20semua)
+### Production
+```bash
+npm run build
+npm start
+```
 
-## 📦 Documentation
+## ✨ Tính năng
 
-* Jalankan perintah `npm install`, lalu `npm run dev`, dan buka `http://localhost:8080`.
-* Ubah isi file `index.html` sesuai keinginanmu.
-* Jika tidak ingin menggunakan **fitur komentar**, hapus atribut `data-url` dan `data-key` di elemen `<body>` pada index.html.
-* Sesuaikan `data-url` pada `<body>` di index dan dashboard sesuai dengan URL backend (jika kamu meng-hosting sendiri).
-* Sesuaikan juga `data-key` di index dengan access key yang bisa kamu ambil dari dashboard.
-* Jika ingin menggunakan GIF, dapatkan Tenor API key di [developers.google.com/tenor](https://developers.google.com/tenor/guides/quickstart).
-* Untuk deployment, jalankan `npm run build:public`. Folder `public` adalah yang akan kamu upload.
-* Untuk backend self-hosting, lihat penjelasan di bawah, atau gunakan **trial API** secara gratis.
+- ✅ Responsive design (mobile, tablet, desktop)
+- ✅ Dark/Light theme
+- ✅ Đếm ngược thời gian
+- ✅ Nhạc nền
+- ✅ Video câu chuyện tình yêu
+- ✅ Album ảnh carousel
+- ✅ Hiệu ứng tuyết rơi
+- ✅ Hiệu ứng confetti
+- ✅ Google Maps tích hợp
+- ✅ Thông tin chuyển khoản/momo
 
-> Undangan ini hanya menggunakan HTML, CSS, dan JavaScript biasa. NPM digunakan agar file JavaScript bisa langsung dieksekusi (bukan bertipe module lagi).
+## 📝 Tùy chỉnh nội dung
 
-> Jika tetap ingin tanpa NPM, ubah `src="./dist/guest.js"` menjadi `src="./js/guest.js" type="module"` pada tag `<head>` di index dan dashboard.html, dengan risiko glitch tema di awal loading.
+### 1. Thông tin cơ bản
+Chỉnh sửa file `index.html`:
 
-> Jika kamu punya pertanyaan, gunakan fitur `discussions` agar bisa dibaca juga oleh teman-teman lainnya.
+**Tên cô dâu chú rể:**
+```html
+<h2>Thanh Phương &amp; Khương Huy</h2>
+```
 
-> [!WARNING]  
-> Gunakan versi 3.14.0, untuk versi 4 masih tahap pengembangan dan berpotensi teredapat bug 🐛
+**Ngày cưới:**
+```html
+<body data-time="2025-11-23 11:30:00">
+```
 
-## 🔥 Deployment API
+**Địa điểm:**
+```html
+<a href="https://maps.app.goo.gl/uD8V7j4sdS9Pvkb39">
+<small>Ấp 4, X.Thạnh trị, T.Vĩnh Long</small>
+```
 
-- Video\
-    otw
+### 2. Hình ảnh
 
-- Presentation
-    [https://docs.google.com/presentation](https://docs.google.com/presentation/d/1EY2YmWdZUI7ASoo0f2wvU7ec_Yt0uZanYa8YLbfNysk/edit)
+Thay thế các file trong `assets/images/`:
+- `bg.webp` - Ảnh nền chính
+- `cowo.webp` - Ảnh chú rể
+- `cewe.webp` - Ảnh cô dâu
+- `donate.png` - QR Code Momo
 
-## ⏰ Trial API
-Untuk kamu yang ingin mencoba secara gratis:
+### 3. Nhạc nền
 
-[https://trial.ulems.my.id](https://trial.ulems.my.id)
+Thay file `assets/music/married.mp3` bằng nhạc yêu thích.
 
-## ⚙️ Tech stack
+### 4. Video
 
-- Bootstrap 5.3.8
-- AOS 2.3.4
-- Fontawesome 7.0.1
-- Canvas Confetti 1.9.3
-- Google Fonts
-- Vanilla JS
+Thay file `assets/video/265501_tiny.mp4` bằng video của bạn.
 
-## 🎨 Credit
-All visual assets in this project are sourced from Pixabay.
+### 5. Thông tin chuyển khoản
 
-## 🤝 Contributing
+Sửa trong `index.html`:
+```html
+<p>Thanh Phương</p>
+<p>Tiên Phong Bank - TPBank</p>
+<p>0945512895</p>
+```
 
-I'm very open to those of you who want to contribute to the undangan!
+## 🎨 Theme
 
-## 🐞 Security Vulnerabilities
+Website hỗ trợ 2 theme:
+- 🌞 Light mode
+- 🌙 Dark mode
 
-If you find any security vulnerabilities in this undangan, please email DKL via [dewanakretarta29@gmail.com](mailto:dewanakretarta29@gmail.com).
+Người dùng có thể chuyển đổi bằng nút ở góc dưới bên phải.
 
-## 📜 License
+## 📱 URL Parameters
 
-Undangan is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Thêm tên khách mời vào URL:
+```
+https://your-website.com/?to=Anh+Chị+Nguyễn+Văn+A
+```
+
+## 🌐 Deploy
+
+### Render.com (Miễn phí)
+1. Push code lên GitHub
+2. Vào [render.com](https://render.com) → New Static Site
+3. Connect GitHub repository
+4. Build command: `npm run build:public`
+5. Publish directory: `public`
+
+### Netlify/Vercel
+Tương tự, chọn:
+- Build command: `npm run build:public`
+- Publish directory: `public`
+
+## 📦 Cấu trúc project
+
+```
+wedding-website/
+├── assets/          # Hình ảnh, nhạc, video
+│   ├── images/
+│   ├── music/
+│   └── video/
+├── css/            # Styles
+├── js/             # JavaScript (1 file duy nhất)
+│   └── guest.js
+├── dist/           # Build output
+├── index.html      # Trang chính
+└── package.json
+```
+
+## 🛠️ Công nghệ
+
+- Vanilla JavaScript (không framework phức tạp)
+- Bootstrap 5.3
+- Font Awesome 7
+- esbuild (bundler siêu nhanh)
+
+## 💡 Lưu ý
+
+- Dự án đã được tối giản hoàn toàn
+- Không có backend API
+- Không có database
+- Phù hợp cho thiệp cưới đơn giản, không cần form gửi lời chúc online
+
+## 📄 License
+
+MIT License - Sử dụng tự do cho mục đích cá nhân.
+
+---
+
+💕 **Chúc bạn có một đám cưới thật hạnh phúc!** 🎊
+

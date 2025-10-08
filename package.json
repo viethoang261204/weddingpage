@@ -1,23 +1,15 @@
 {
+    "name": "wedding-website",
+    "version": "1.0.0",
+    "description": "Simple and beautiful wedding invitation website",
     "devDependencies": {
-        "@eslint/js": "^9.33.0",
-        "eslint": "^9.33.0",
-        "fs-extra": "^11.3.1",
-        "globals": "^16.3.0",
-        "htmlhint": "^1.6.3",
-        "madge": "^8.0.0",
-        "stylelint": "^16.23.1",
-        "stylelint-config-recommended": "^17.0.0"
+        "fs-extra": "^11.3.1"
     },
     "scripts": {
-        "lint:js": "eslint js",
-        "lint:css": "stylelint css", 
-        "lint:html": "htmlhint **/*.html",
-        "dev": "npx esbuild js/*.js --bundle --outdir=dist --servedir=. --serve=8080",
-        "build": "npx esbuild js/*.js --bundle --minify --outdir=dist",
+        "dev": "npx esbuild js/guest.js --bundle --outdir=dist --servedir=. --serve=8080",
+        "build": "npx esbuild js/guest.js --bundle --minify --outdir=dist",
         "build:public": "npm run build && node -e \"const fs = require('fs-extra'); fs.ensureDir('public').then(() => Promise.all(['assets', 'css', 'dist', 'index.html'].map((f) => fs.copy(f, 'public/' + f)))).then(() => console.log('✅ Successfully!'));\"",
-        "start": "npm run build:public && npx serve public -s",
-        "render-build": "npm run build:public"
+        "start": "npm run build:public && npx serve public -s"
     },
     "dependencies": {
         "esbuild": "^0.25.9",

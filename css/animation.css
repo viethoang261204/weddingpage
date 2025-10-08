@@ -3,12 +3,10 @@
         transform: translateY(1rem);
         opacity: 0;
     }
-
     10% {
         transform: translateY(0);
         opacity: 1;
     }
-
     100% {
         transform: translateY(0);
         opacity: 0;
@@ -30,7 +28,6 @@
     from {
         transform: rotate(0deg);
     }
-
     to {
         transform: rotate(360deg);
     }
@@ -58,3 +55,106 @@
 .slide-desktop-active {
     transform: scale(1.15);
 }
+
+/* ======================================
+   Sparkle Animation – Đốm sáng cầu vồng mờ quanh khung ảnh
+   ====================================== */
+
+.photo-frame-container {
+    position: relative;
+    display: inline-block;
+}
+
+.photo-frame-sparkle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 13rem;
+    height: 13rem;
+    margin-top: -6.5rem;
+    margin-left: -6.5rem;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Đốm sáng trắng mờ có ánh cầu vồng */
+.sparkle-dot {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(
+        circle at 40% 40%,
+        rgba(255,255,255,0.4) 0%,
+        rgba(255,255,255,0.2) 30%,
+        rgba(255,255,255,0.1) 60%,
+        transparent 100%
+    );
+    border-radius: 50%;
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.2),
+        0 0 30px rgba(255,255,255,0.15),
+        0 0 50px rgba(255,255,255,0.1),
+        0 0 70px rgba(255,255,255,0.05);
+    offset-path: path('M 104,104 m -97.5,0 a 97.5,97.5 0 1,0 195,0 a 97.5,97.5 0 1,0 -195,0');
+    animation:
+        sparkle-around 5s linear infinite,
+        rainbow-shimmer 3s linear infinite;
+    opacity: 0.6;
+    filter: blur(2px);
+}
+
+/* Hiệu ứng chạy quanh khung */
+@keyframes sparkle-around {
+    0% {
+        offset-distance: 0%;
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+    10% {
+        opacity: 0.9;
+        transform: scale(0.8) rotate(180deg);
+    }
+    50% {
+        transform: scale(1) rotate(360deg);
+    }
+    90% {
+        opacity: 0.9;
+        transform: scale(0.8) rotate(540deg);
+    }
+    100% {
+        offset-distance: 100%;
+        opacity: 0;
+        transform: scale(0.5) rotate(720deg);
+    }
+}
+
+/* Hiệu ứng cầu vồng xoay liên tục – 7 sắc */
+@keyframes rainbow-shimmer {
+    0% {
+        filter: hue-rotate(0deg) brightness(1.2);
+    }
+    14% {
+        filter: hue-rotate(60deg) brightness(1.3);
+    }
+    28% {
+        filter: hue-rotate(120deg) brightness(1.4);
+    }
+    42% {
+        filter: hue-rotate(180deg) brightness(1.3);
+    }
+    57% {
+        filter: hue-rotate(240deg) brightness(1.2);
+    }
+    71% {
+        filter: hue-rotate(300deg) brightness(1.4);
+    }
+    85% {
+        filter: hue-rotate(330deg) brightness(1.3);
+    }
+    100% {
+        filter: hue-rotate(360deg) brightness(1.2);
+    }
+}
+
+/* Branches removed - no decoration needed */
