@@ -1,145 +1,179 @@
-# 💍 Wedding Website - Tối Giản
+# 💍 Wedding Invitation Website
 
-Website thiệp cưới đơn giản, đẹp mắt và dễ sử dụng.
+Trang web thiệp cưới điện tử đẹp mắt, hiện đại và dễ sử dụng.
 
-## 🚀 Chạy dự án
+## 🎨 Demo
 
-### Development (Khuyến nghị)
-```bash
-npm install
-npm run dev
-```
-Mở trình duyệt: `http://localhost:8080`
-
-### Production
-```bash
-npm run build
-npm start
-```
+- **Trang chính**: [https://your-domain.com/trangchu/](https://your-domain.com/trangchu/)
+- **Admin Panel**: [https://your-domain.com/login/](https://your-domain.com/login/)
 
 ## ✨ Tính năng
 
-- ✅ Responsive design (mobile, tablet, desktop)
-- ✅ Dark/Light theme
-- ✅ Đếm ngược thời gian
-- ✅ Nhạc nền
-- ✅ Video câu chuyện tình yêu
-- ✅ Album ảnh carousel
-- ✅ Hiệu ứng tuyết rơi
-- ✅ Hiệu ứng confetti
+### 🎯 Dành cho khách mời:
+- ✅ Thiệp cưới điện tử với hiệu ứng đẹp mắt
+- ✅ Countdown đến ngày cưới
+- ✅ Thông tin sự kiện chi tiết (nhà gái, nhà trai, hôn lễ)
 - ✅ Google Maps tích hợp
-- ✅ Thông tin chuyển khoản/momo
+- ✅ Gallery ảnh cưới
+- ✅ Gửi lời chúc phúc
+- ✅ Thông tin chuyển khoản với QR code
+- ✅ Nhạc nền tự động
+- ✅ Hiệu ứng tuyết rơi & confetti
+- ✅ Dark/Light mode
+- ✅ Responsive - hoạt động mượt trên mọi thiết bị
 
-## 📝 Tùy chỉnh nội dung
+### 👨‍💼 Dành cho admin:
+- ✅ Tạo link thiệp cá nhân hóa cho từng khách mời
+- ✅ Mã hóa Base64 để bảo mật
+- ✅ Dashboard quản lý lời chúc
+- ✅ Phân trang (5 lời chúc/trang)
+- ✅ Lọc theo trạng thái tham dự
+- ✅ Tìm kiếm lời chúc
+- ✅ Export CSV
+- ✅ Thống kê số lượng khách mời
+- ✅ Đăng nhập bảo mật
 
-### 1. Thông tin cơ bản
-Chỉnh sửa file `index.html`:
+## 🚀 Công nghệ sử dụng
 
-**Tên cô dâu chú rể:**
-```html
-<h2>Thanh Phương &amp; Khương Huy</h2>
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Build Tool**: esbuild
+- **CSS Framework**: Bootstrap 5
+- **Icons**: Font Awesome
+- **Animation**: AOS (Animate On Scroll)
+- **Fonts**: Google Fonts (Playfair Display, Great Vibes, Cormorant Garamond)
+- **Storage**: localStorage
+- **Deployment**: Render.com / Static Hosting
+
+## 📦 Cài đặt
+
+```bash
+# Clone repository
+git clone https://github.com/your-username/wedding-website.git
+cd wedding-website
+
+# Cài đặt dependencies
+npm install
+
+# Chạy development server
+npm run dev
+
+# Build production
+npm run build
+
+# Build và copy sang thư mục public
+npm run build:public
+
+# Chạy production server
+npm start
 ```
 
-**Ngày cưới:**
-```html
-<body data-time="2025-11-23 11:30:00">
-```
+## 🌐 Deploy lên Render.com
 
-**Địa điểm:**
-```html
-<a href="https://maps.app.goo.gl/uD8V7j4sdS9Pvkb39">
-<small>Ấp 4, X.Thạnh trị, T.Vĩnh Long</small>
-```
-
-### 2. Hình ảnh
-
-Thay thế các file trong `assets/images/`:
-- `bg.webp` - Ảnh nền chính
-- `cowo.webp` - Ảnh chú rể
-- `cewe.webp` - Ảnh cô dâu
-- `donate.png` - QR Code Momo
-
-### 3. Nhạc nền
-
-Thay file `assets/music/married.mp3` bằng nhạc yêu thích.
-
-### 4. Video
-
-Thay file `assets/video/265501_tiny.mp4` bằng video của bạn.
-
-### 5. Thông tin chuyển khoản
-
-Sửa trong `index.html`:
-```html
-<p>Thanh Phương</p>
-<p>Tiên Phong Bank - TPBank</p>
-<p>0945512895</p>
-```
-
-## 🎨 Theme
-
-Website hỗ trợ 2 theme:
-- 🌞 Light mode
-- 🌙 Dark mode
-
-Người dùng có thể chuyển đổi bằng nút ở góc dưới bên phải.
-
-## 📱 URL Parameters
-
-Thêm tên khách mời vào URL:
-```
-https://your-website.com/?to=Anh+Chị+Nguyễn+Văn+A
-```
-
-## 🌐 Deploy
-
-### Render.com (Miễn phí)
 1. Push code lên GitHub
-2. Vào [render.com](https://render.com) → New Static Site
-3. Connect GitHub repository
-4. Build command: `npm run build:public`
-5. Publish directory: `public`
+2. Kết nối repository với Render.com
+3. Render sẽ tự động detect `render.yaml` và deploy
+4. Build command: `npm run render-build`
+5. Static publish path: `./public`
 
-### Netlify/Vercel
-Tương tự, chọn:
-- Build command: `npm run build:public`
-- Publish directory: `public`
-
-## 📦 Cấu trúc project
+## 📁 Cấu trúc thư mục
 
 ```
 wedding-website/
-├── assets/          # Hình ảnh, nhạc, video
-│   ├── images/
-│   ├── music/
-│   └── video/
-├── css/            # Styles
-├── js/             # JavaScript (1 file duy nhất)
-│   └── guest.js
-├── dist/           # Build output
-├── index.html      # Trang chính
-└── package.json
+├── trangchu/           # Trang thiệp cưới chính
+├── admin/              # Trang tạo link thiệp
+├── dashboard/          # Dashboard quản lý lời chúc
+├── login/              # Trang đăng nhập admin
+├── assets/             # Ảnh, nhạc, video
+├── css/                # Stylesheet
+├── js/                 # JavaScript source
+├── dist/               # JavaScript đã build
+├── public/             # Thư mục deploy
+├── package.json        # Dependencies & scripts
+└── render.yaml         # Render deployment config
 ```
 
-## 🛠️ Công nghệ
+## 🔐 Thông tin đăng nhập Admin
 
-- Vanilla JavaScript (không framework phức tạp)
-- Bootstrap 5.3
-- Font Awesome 7
-- esbuild (bundler siêu nhanh)
+- **URL**: `/login/`
+- **Username**: `admin`
+- **Password**: `1`
 
-## 💡 Lưu ý
+> ⚠️ **Lưu ý**: Đổi mật khẩu trong file `login/index.html` trước khi deploy production!
 
-- Dự án đã được tối giản hoàn toàn
-- Không có backend API
-- Không có database
-- Phù hợp cho thiệp cưới đơn giản, không cần form gửi lời chúc online
+## 📝 Tùy chỉnh
+
+### Thay đổi thông tin cưới:
+Chỉnh sửa file `trangchu/index.html`:
+- Tên cô dâu, chú rể
+- Ngày giờ sự kiện
+- Địa chỉ
+- Link Google Maps
+- Thông tin ngân hàng
+
+### Thay đổi ảnh:
+Upload ảnh vào thư mục `assets/images/` và cập nhật đường dẫn trong HTML.
+
+### Thay đổi nhạc nền:
+Thay file `assets/music/married.mp3` hoặc cập nhật `data-audio` trong `trangchu/index.html`.
+
+## 🎯 URL Structure
+
+- `/` → Redirect to `/trangchu/`
+- `/trangchu/` → Trang thiệp cưới chính
+- `/trangchu/?to=BASE64_ENCODED_NAME` → Thiệp cá nhân hóa
+- `/admin/` → Tạo link thiệp (cần login)
+- `/dashboard/` → Quản lý lời chúc (cần login)
+- `/login/` → Đăng nhập admin
+
+## 🌟 Tính năng nổi bật
+
+### 1. Link thiệp cá nhân hóa
+- Mỗi khách mời có link riêng với tên được mã hóa Base64
+- Title động theo tên người nhận
+- Ví dụ: `Thư mời cưới Anh Chị Nguyễn Văn A`
+
+### 2. Phân trang thông minh
+- Hiển thị 5 lời chúc/trang
+- Sắp xếp mới nhất lên đầu
+- Smooth scroll khi chuyển trang
+
+### 3. Dashboard đầy đủ
+- Thống kê tổng quan
+- Lọc theo trạng thái
+- Tìm kiếm real-time
+- Export CSV
+
+## 📱 Responsive Design
+
+Website được tối ưu cho:
+- 📱 Mobile (< 768px)
+- 💻 Tablet (768px - 991px)
+- 🖥️ Desktop (≥ 992px)
+
+## 🐛 Troubleshooting
+
+### Build failed trên Render:
+```bash
+# Đảm bảo có script render-build trong package.json
+npm run render-build
+```
+
+### Ảnh không hiển thị:
+- Kiểm tra đường dẫn tương đối
+- Đảm bảo file tồn tại trong `assets/images/`
+
+### Lời chúc không lưu:
+- Kiểm tra localStorage không bị block
+- Thử chế độ incognito
 
 ## 📄 License
 
-MIT License - Sử dụng tự do cho mục đích cá nhân.
+MIT License - Free to use and modify
+
+## 👨‍💻 Phát triển bởi
+
+**Việt Hoàng**
 
 ---
 
-💕 **Chúc bạn có một đám cưới thật hạnh phúc!** 🎊
-
+⭐ Nếu bạn thấy project hữu ích, hãy cho một star nhé!
