@@ -2,7 +2,7 @@ services:
   - type: web
     name: wedding-website
     env: static
-    buildCommand: npm run build:public
+    buildCommand: npm run render-build
     staticPublishPath: ./public
     headers:
       - path: /*

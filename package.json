@@ -8,8 +8,9 @@
     "scripts": {
         "dev": "npx esbuild js/guest.js --bundle --outdir=dist --servedir=. --serve=8080",
         "build": "npx esbuild js/guest.js --bundle --minify --outdir=dist",
-        "build:public": "npm run build && node -e \"const fs = require('fs-extra'); fs.ensureDir('public').then(() => Promise.all(['assets', 'css', 'dist', 'index.html'].map((f) => fs.copy(f, 'public/' + f)))).then(() => console.log('✅ Successfully!'));\"",
-        "start": "npm run build:public && npx serve public -s"
+        "render-build": "npm run build && node -e \"const fs = require('fs-extra'); fs.ensureDir('public').then(() => Promise.all(['assets', 'css', 'dist', 'index.html', 'trangchu', 'admin', 'dashboard', 'login', 'admin.html', 'admindashboard.html', 'adminlogin.html'].map((f) => fs.copy(f, 'public/' + f)))).then(() => console.log('✅ Build successfully!'));\"",
+        "build:public": "npm run build && node -e \"const fs = require('fs-extra'); fs.ensureDir('public').then(() => Promise.all(['assets', 'css', 'dist', 'index.html', 'trangchu', 'admin', 'dashboard', 'login'].map((f) => fs.copy(f, 'public/' + f)))).then(() => console.log('✅ Successfully!'));\"",
+        "start": "npx serve public -s"
     },
     "dependencies": {
         "esbuild": "^0.25.9",
