@@ -1183,3 +1183,186 @@ svg {
 .no-gap-bottom {
     margin-bottom: -0.75rem !important;
 }
+
+/* Big Love Heart in Center - Desktop Only */
+.big-love-heart {
+    font-size: 8rem;
+    animation: heartBeatLove 1.5s ease-in-out infinite, floatHeart 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(237, 156, 102, 0.6));
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px var(--wedding-accent),
+        0 0 30px var(--wedding-secondary);
+}
+
+@keyframes heartBeatLove {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.15);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes floatHeart {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@media (min-width: 992px) {
+    /* Desktop: spread bride/groom columns wider with big middle gap */
+    #bride .row.g-0 {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+    }
+    #bride .row.g-0 > .col-6 {
+        flex: 0 0 35%;
+        max-width: 35%;
+    }
+}
+
+.center-couple-title h2 {
+    color: var(--wedding-primary);
+}
+.center-couple-title .date-ribbon {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    border-top: 2px solid var(--wedding-primary);
+    border-bottom: 2px solid var(--wedding-primary);
+}
+.center-couple-title .date-ribbon span {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Love Story video sizing */
+#video-love-stroy.w-80, #video-love-stroy .w-80 {
+    max-width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+@media (min-width: 992px) {
+    #video-love-stroy.w-80, #video-love-stroy .w-80 {
+        max-width: 70% !important;
+    }
+}
+
+/* Love Story content text larger */
+.section-love-story p,
+.section-love-story .small,
+.story-timeline p,
+.story-timeline .small {
+    font-size: 1.15rem !important;
+    line-height: 1.8 !important;
+}
+
+/* Utility width 80 and centering */
+.w-80 {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Ensure Love Story block centers */
+.section-love-story .bg-theme-auto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section-love-story .position-relative {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.section-love-story #video-love-stroy {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Force-center the actual video element */
+.section-love-story video,
+.section-love-story iframe {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 80% !important;
+}
+@media (min-width: 992px) {
+  .section-love-story video,
+  .section-love-story iframe {
+    width: 70% !important;
+    max-width: 1000px;
+  }
+}
+
+/* Bigger typography for key sections */
+#wedding-date p,
+#wedding-date small,
+#wedding-date .wedding-calendar,
+#wedding-date .calendar-day,
+#wedding-date .calendar-weekday,
+#wedding-date .calendar-header {
+    font-size: 1.1rem;
+}
+#wedding-date .calendar-header { font-size: 1.2rem; }
+#wedding-date .calendar-day { font-size: 1rem; }
+
+/* Event info blocks below calendar */
+#wedding-date .overflow-x-hidden p,
+#wedding-date .overflow-x-hidden small,
+#wedding-date .overflow-x-hidden h2 {
+    font-size: 1.1rem;
+}
+#wedding-date .overflow-x-hidden h2 { font-size: 2.1rem; }
+
+/* Love Gift section */
+#love-gift p,
+#love-gift .btn,
+#love-gift small { font-size: 1.05rem; }
+#love-gift h2 { font-size: 2.35rem; }
+
+/* Wishes section */
+#comment p,
+#comment label,
+#comment .form-control,
+#comment .btn { font-size: 1.05rem; }
+#comment h2 { font-size: 2.35rem; }
+
+/* Enlarge couple circle photos (desktop) */
+@media (min-width: 992px) {
+  .img-center-crop {
+    width: 19.5rem !important; /* 13rem * 1.5 */
+    height: 19.5rem !important;
+  }
+}
+
+/* Flower accent under circle photos */
+.photo-flowers {
+  position: absolute;
+  bottom: -10px;
+  right: -20px;
+  width: 140px;
+  opacity: 0.4;
+  filter: blur(0.3px);
+  animation: flowerFloat 5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes flowerFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.35; }
+  50% { transform: translateY(-8px) rotate(2deg); opacity: 0.5; }
+}
