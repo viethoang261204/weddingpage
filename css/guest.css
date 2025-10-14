@@ -3,12 +3,12 @@
 
 /* Custom Wedding Color Palette */
 :root {
-    --wedding-primary: #bf8e4e;     /* Nâu vàng nhạt - chủ đạo */
-    --wedding-secondary: #edb366;   /* Vàng cam nhạt - accent */
-    --wedding-accent: #ed9c66;      /* Cam hồng - highlight */
-    --wedding-tertiary: #c47037;    /* Nâu cam - secondary */
-    --wedding-dark: #ad6231;        /* Nâu đậm - dark tone */
-    --wedding-light: #f5f1ea;       /* Màu nền sáng */
+    --wedding-primary: #336600;     /* Xanh lá đậm - chủ đạo */
+    --wedding-secondary: #4d7a1a;   /* Xanh lá vừa - accent */
+    --wedding-accent: #66a31a;      /* Xanh lá sáng - highlight */
+    --wedding-tertiary: #2d4d00;    /* Xanh lá rất đậm - secondary */
+    --wedding-dark: #1a3300;        /* Xanh lá tối - dark tone */
+    --wedding-light: #f0f5e6;       /* Màu nền sáng xanh nhạt */
     --wedding-gradient: linear-gradient(135deg, var(--wedding-primary), var(--wedding-secondary));
     --wedding-gradient-accent: linear-gradient(135deg, var(--wedding-accent), var(--wedding-tertiary));
 }
@@ -130,10 +130,6 @@ h1, h2, h3 {
     filter: brightness(1.1);
 }
 
-html[data-bs-theme="dark"] .btn-transparent {
-    background-color: rgba(var(--bs-dark-rgb), 0.5) !important;
-    backdrop-filter: blur(0.5rem);
-}
 
 html[data-bs-theme="light"] .btn-transparent {
     background-color: rgba(var(--bs-light-rgb), 0.5) !important;
@@ -158,27 +154,22 @@ html[data-bs-theme="dark"] .color-theme-svg {
     background-color: var(--bs-dark);
 }
 
-html[data-bs-theme="light"] .bg-light-dark {
-    background-color: rgb(var(--bs-light-rgb));
-}
-
+/* Force all sections to white background - remove dark theme */
+html[data-bs-theme="light"] .bg-light-dark,
 html[data-bs-theme="dark"] .bg-light-dark {
-    background-color: rgb(var(--bs-dark-rgb));
+    background-color: rgb(var(--bs-white-rgb)) !important;
 }
 
-html[data-bs-theme="light"] .bg-white-black {
-    background-color: rgb(var(--bs-white-rgb));
-}
-
+html[data-bs-theme="light"] .bg-white-black,
 html[data-bs-theme="dark"] .bg-white-black {
-    background-color: rgb(var(--bs-black-rgb));
+    background-color: rgb(var(--bs-white-rgb)) !important;
 }
 
 .bg-cover-home {
-    width: 100%;
-    height: 100%;
+    width: 200%;
+    height: 200%;
     object-fit: cover;
-    mask-image: linear-gradient(0.5turn, transparent, black 40%, black 60%, transparent);
+    z-index: 3;
 }
 
 .width-loading {
@@ -334,13 +325,14 @@ html[data-bs-theme="dark"] #navbar-menu .btn {
 /* Heart and Love Elements */
 .animate-love {
     color: var(--wedding-accent) !important;
-    filter: drop-shadow(0 2px 4px rgba(237, 156, 102, 0.3));
+    filter: drop-shadow(0 2px 4px rgba(102, 163, 26, 0.3));
 }
 
 /* Font Esthetic Enhancement */
 .font-esthetic {
     color: var(--wedding-tertiary) !important;
-    text-shadow: 0 2px 4px rgba(196, 112, 55, 0.2);
+    text-shadow: 0 2px 4px rgba(45, 77, 0, 0.2);
+    font-weight: 600 !important; /* Restore font-weight */
 }
 
 /* Snow Effect Styling */
@@ -890,7 +882,7 @@ canvas {
     font-weight: 600;
     color: var(--wedding-tertiary);
     padding: 8px 4px;
-    background: rgba(191, 142, 78, 0.1);
+    background: rgba(51, 102, 0, 0.1);
     border-radius: 5px;
 }
 
@@ -1456,8 +1448,20 @@ html[data-bs-theme="light"] .headline-couple { color: #000000; text-shadow: 0 1p
 @media (min-width: 992px) { .extra-down { top: 62% !important; } }
 
 /* Let hero background bleed into the wave area only upward */
-#home { position: relative; overflow: visible !important; }
-#home .bg-cover-home { position: absolute; z-index: 2; height: 120% !important; }
+#home { 
+  position: relative; 
+  overflow: visible !important; 
+  z-index: 10; /* Ensure home section stays above others */
+  margin-bottom: 0 !important; /* Remove any default margin */
+  min-height: 20vh !important; /* Tăng height để dài ra */
+  padding-bottom: 3rem !important; /* Add padding for spacing */
+}
+#home .bg-cover-home { 
+  position: absolute; 
+  z-index: 2; 
+  height: 120% !important; 
+  top: 0; /* Ensure it starts from top */
+}
 
 /* Ensure wave wrappers participate in stacking order */
 .svg-wrapper { position: relative; }
@@ -1468,11 +1472,22 @@ html[data-bs-theme="light"] .headline-couple { color: #000000; text-shadow: 0 1p
 /* The next wave (below next section) sits ABOVE the hero image so it won't bleed into black */
 .wave-dark-to-black { z-index: 3; }
 
-/* Keep hero background image blurred, foreground crisp */
+/* Ensure bride section has proper spacing and doesn't overlap */
+#bride { 
+  position: relative; 
+  z-index: 5; /* Below home but above waves */
+  margin-top: 8rem !important; /* Khoảng cách từ section home */
+  padding-top: 8rem !important; /* Padding trên */
+  padding-bottom: 14rem !important; /* Padding dưới */
+  min-height: 60vh !important; /* Đảm bảo section đủ cao */
+}
+
+
+/* Keep hero background image crisp - blur removed */
 #home .bg-cover-home {
-  filter: blur(1px) brightness(0.98);
-  -webkit-filter: blur(1px) brightness(0.98);
-  width: 110% !important; /* avoid blur edges */
+  filter: none;
+  -webkit-filter: none;
+  width: 100% !important;
   max-width: none !important;
 }
 #home .position-relative.text-center.bg-overlay-auto {
@@ -1480,19 +1495,129 @@ html[data-bs-theme="light"] .headline-couple { color: #000000; text-shadow: 0 1p
   z-index: 3; /* ensure text and circle photo sit above */
 }
 
-/* Couple names title - high contrast over blurred bg */
+/* Couple names title - high contrast */
 .couple-names-title {
-  color: #f0c08a !important; /* warm gold */
+  color: #4d7a1a !important; /* warm green */
   text-shadow: 0 2px 8px rgba(0,0,0,.45), 0 0 2px rgba(0,0,0,.25);
 }
+
+/* Remove all blur effects from home section */
+#home * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* Force all sections to white background - remove dark theme completely */
+section, .bg-light-dark, .bg-white-black, .bg-theme-auto {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+}
+
+/* Force all text to dark color */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  color: #333333 !important;
+}
+
+/* Hide theme toggle button completely */
+#button-theme {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Flower decoration animation - gentle swaying */
+@keyframes flowerSway {
+  0%, 100% { 
+    transform: rotate(-23deg) scale(0.40) translateX(0px) translateY(0px); 
+  }
+  25% { 
+    transform: rotate(-20deg) scale(0.40) translateX(1px) translateY(-1px); 
+  }
+  50% { 
+    transform: rotate(-26deg) scale(0.40) translateX(-1px) translateY(1px); 
+  }
+  75% { 
+    transform: rotate(-21deg) scale(0.40) translateX(0.5px) translateY(-0.5px); 
+  }
+}
+
+@keyframes flowerSway2 {
+  0%, 100% { 
+    transform: rotate(10deg) scale(0.65) translateX(0px) translateY(0px); 
+  }
+  25% { 
+    transform: rotate(13deg) scale(0.65) translateX(-1px) translateY(1px); 
+  }
+  50% { 
+    transform: rotate(7deg) scale(0.65) translateX(1px) translateY(-1px); 
+  }
+  75% { 
+    transform: rotate(12deg) scale(0.65) translateX(-0.5px) translateY(0.5px); 
+  }
+}
+
+/* Apply animation to flower decorations with fixed sizes */
+img[src$="anhcanhhoa1.png"] {
+  animation: flowerSway 3s ease-in-out infinite;
+}
+
+img[src$="anhcanhhoa2.png"] {
+  animation: flowerSway2 2.5s ease-in-out infinite;
+}
+
+/* Animation for anhcanhhoa3 and anhcanhhoa4 */
+@keyframes flowerSway3 {
+  0%, 100% { 
+    transform: scale(0.6) translateX(0px) translateY(0px) rotate(0deg); 
+  }
+  25% { 
+    transform: scale(0.6) translateX(2px) translateY(-1px) rotate(1deg); 
+  }
+  50% { 
+    transform: scale(0.6) translateX(-1px) translateY(2px) rotate(-1deg); 
+  }
+  75% { 
+    transform: scale(0.6) translateX(1px) translateY(-0.5px) rotate(0.5deg); 
+  }
+}
+
+@keyframes flowerSway4 {
+  0%, 100% { 
+    transform: scale(1) translateX(0px) translateY(0px) rotate(0deg); 
+  }
+  30% { 
+    transform: scale(1) translateX(-2px) translateY(1px) rotate(-1deg); 
+  }
+  60% { 
+    transform: scale(1) translateX(1px) translateY(-2px) rotate(1deg); 
+  }
+  90% { 
+    transform: scale(1) translateX(-1px) translateY(0.5px) rotate(-0.5deg); 
+  }
+}
+
+img[src$="anhcanhhoa3.png"] {
+  animation: flowerSway3 4s ease-in-out infinite;
+}
+
+img[src$="anhcanhhoa4.png"] {
+  animation: flowerSway4 3.5s ease-in-out infinite;
+}
 html[data-bs-theme="light"] .couple-names-title {
-  color: #a8642a !important; /* darker gold for light theme */
+  color: #2d4d00 !important; /* darker green for light theme */
   text-shadow: 0 1px 3px rgba(255,255,255,.5), 0 2px 6px rgba(0,0,0,.25);
 }
 
-/* Fine tune positions for specific photos */
-img[src$="anh5.jpg"].img-center-crop { object-position: 40% 50% !important; }
-img[src$="anh4.jpg"].img-center-crop { object-position: 50% 90% !important; }
+/* Fine tune positions for specific photos - moved to inline styles */
+  
+  /* Fix anh21 centering and full size */
+  img[src$="anh21.jpg"] { 
+    object-position: center !important; 
+    width: 100% !important; 
+    height: 100% !important; 
+    object-fit: cover !important; 
+  }
 
 /* Prevent horizontal scroll/shift */
 html, body { overflow-x: hidden; }
@@ -1504,3 +1629,7 @@ html, body { overflow-x: hidden; }
 
 /* Ensure hero background is centered and not causing overflow */
 #home .bg-cover-home { left: 50%; transform: translate(-50%, -50%); }
+
+#savethedate {
+    color:white !important;
+}

@@ -3,14 +3,14 @@
 ## Render.com (Khuyến nghị - Miễn phí)
 
 ### Bước 1: Chuẩn bị
-```bash
-git init
-git add .
+   ```bash
+   git init
+   git add .
 git commit -m "Wedding website ready"
-git branch -M main
+   git branch -M main
 git remote add origin <your-github-repo>
-git push -u origin main
-```
+   git push -u origin main
+   ```
 
 ### Bước 2: Deploy trên Render
 1. Truy cập: https://render.com
