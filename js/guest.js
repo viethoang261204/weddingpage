@@ -412,3 +412,27 @@
     }
 
 })(window);
+
+(function(){
+  const onReady = () => {
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && reveals.length) {
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if (e.isIntersecting) {
+            e.target.classList.add('show');
+            io.unobserve(e.target);
+          }
+        });
+      }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+      reveals.forEach(el=>io.observe(el));
+    } else {
+      reveals.forEach(el=>el.classList.add('show'));
+    }
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
+  }
+})();

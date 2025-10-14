@@ -79,12 +79,38 @@ h1, h2, h3 {
     object-fit: cover;
 }
 
-/* Gallery Grid Styles */
+/* Masonry Gallery Grid - Natural Layout */
+.masonry-gallery {
+    columns: 1;
+    column-gap: 1rem;
+    margin: 0;
+}
+
+@media (min-width: 576px) {
+    .masonry-gallery { columns: 2; }
+}
+
+@media (min-width: 992px) {
+    .masonry-gallery { columns: 3; }
+}
+
+@media (min-width: 1400px) {
+    .masonry-gallery { columns: 4; }
+}
+
 .gallery-item {
-    position: relative;
-    overflow: hidden;
+    break-inside: avoid;
+    margin-bottom: 1rem;
     border-radius: 1rem;
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Landscape images span full width across columns */
+.gallery-item.landscape {
+    column-span: all;
+    width: 100%;
+    margin-bottom: 1.5rem;
 }
 
 .gallery-item:hover {
@@ -93,6 +119,9 @@ h1, h2, h3 {
 }
 
 .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
     transition: transform 0.5s ease, filter 0.3s ease;
 }
 
@@ -1388,3 +1417,90 @@ svg {
   color: var(--wedding-secondary) !important;
   text-shadow: 0 2px 6px rgba(0,0,0,.2);
 }
+
+/* Fly-in animations */
+@keyframes flyInLeft {
+  0% { opacity: 0; transform: translateX(-60px) scale(.98); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes flyInRight {
+  0% { opacity: 0; transform: translateX(60px) scale(.98); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.reveal { opacity: 0; transform: translateY(20px); }
+.reveal.show { opacity: 1; transform: none; transition: all .7s ease; }
+.reveal.fly-left.show { animation: flyInLeft .8s ease both; }
+.reveal.fly-right.show { animation: flyInRight .8s ease both; }
+.reveal.fade-up.show { animation: fadeUp .8s ease both; }
+
+/* Disable sparkle dots around photo */
+.photo-frame-sparkle, .sparkle-dot { display: none !important; }
+
+/* Wave color sync helpers */
+html[data-bs-theme="dark"] .wave-dark-to-black { color: rgb(var(--bs-dark-rgb)); background-color: rgb(var(--bs-black-rgb)); }
+html[data-bs-theme="dark"] .wave-black-to-dark { color: rgb(var(--bs-black-rgb)); background-color: rgb(var(--bs-dark-rgb)); }
+html[data-bs-theme="light"] .wave-dark-to-black { color: rgb(var(--bs-light-rgb)); background-color: rgb(var(--bs-white-rgb)); }
+html[data-bs-theme="light"] .wave-black-to-dark { color: rgb(var(--bs-white-rgb)); background-color: rgb(var(--bs-light-rgb)); }
+
+/* Headline above couple names - theme aware */
+.headline-couple { color: #ffffff; }
+html[data-bs-theme="light"] .headline-couple { color: #000000; text-shadow: 0 1px 3px rgba(255,255,255,.4); }
+
+/* Helper: push hero background image further down */
+.extra-down { top: 60% !important; }
+@media (min-width: 992px) { .extra-down { top: 62% !important; } }
+
+/* Let hero background bleed into the wave area only upward */
+#home { position: relative; overflow: visible !important; }
+#home .bg-cover-home { position: absolute; z-index: 2; height: 120% !important; }
+
+/* Ensure wave wrappers participate in stacking order */
+.svg-wrapper { position: relative; }
+
+/* The top wave right after #home sits BEHIND the hero image */
+.wave-black-to-dark { z-index: 1; }
+
+/* The next wave (below next section) sits ABOVE the hero image so it won't bleed into black */
+.wave-dark-to-black { z-index: 3; }
+
+/* Keep hero background image blurred, foreground crisp */
+#home .bg-cover-home {
+  filter: blur(1px) brightness(0.98);
+  -webkit-filter: blur(1px) brightness(0.98);
+  width: 110% !important; /* avoid blur edges */
+  max-width: none !important;
+}
+#home .position-relative.text-center.bg-overlay-auto {
+  position: relative;
+  z-index: 3; /* ensure text and circle photo sit above */
+}
+
+/* Couple names title - high contrast over blurred bg */
+.couple-names-title {
+  color: #f0c08a !important; /* warm gold */
+  text-shadow: 0 2px 8px rgba(0,0,0,.45), 0 0 2px rgba(0,0,0,.25);
+}
+html[data-bs-theme="light"] .couple-names-title {
+  color: #a8642a !important; /* darker gold for light theme */
+  text-shadow: 0 1px 3px rgba(255,255,255,.5), 0 2px 6px rgba(0,0,0,.25);
+}
+
+/* Fine tune positions for specific photos */
+img[src$="anh5.jpg"].img-center-crop { object-position: 40% 50% !important; }
+img[src$="anh4.jpg"].img-center-crop { object-position: 50% 90% !important; }
+
+/* Prevent horizontal scroll/shift */
+html, body { overflow-x: hidden; }
+
+/* Masonry safety: ensure items don't exceed column width */
+.masonry-gallery, .gallery-item, .gallery-item img { box-sizing: border-box; }
+.masonry-gallery { width: 100%; }
+.gallery-item img { max-width: 100%; height: auto; }
+
+/* Ensure hero background is centered and not causing overflow */
+#home .bg-cover-home { left: 50%; transform: translate(-50%, -50%); }

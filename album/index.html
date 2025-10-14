@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Album cưới</title>
+    <link rel="stylesheet" href="../css/guest.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+  </head>
+  <body class="bg-light-dark">
+    <main id="gallery" class="container py-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="font-esthetic m-0" style="font-size: 2rem">Album cưới</h1>
+        <a href="../trangchu/index.html#gallery" class="btn btn-outline-auto btn-sm rounded-pill shadow px-4 btn-fancy">← Quay về trang chính</a>
+      </div>
+
+      <div class="masonry-gallery">
+        <!-- Render 25 images anhcuoi1.jpg → anhcuoi25.jpg -->
+        
+        <script>
+          const container = document.currentScript.parentElement;
+          for (let i = 1; i <= 25; i++) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `<img src="../assets/images/anhcuoi${i}.jpg" alt="anhcuoi${i}" class="rounded-4 shadow cursor-pointer" onclick="undangan.guest.modal(this)" />`;
+            container.appendChild(item);
+          }
+        </script>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="../trangchu/index.html#gallery" class="btn btn-outline-auto btn-sm rounded-pill shadow px-4 btn-fancy">← Quay về trang chính</a>
+      </div>
+    </main>
+  </body>
+</html>
