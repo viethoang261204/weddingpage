@@ -1356,7 +1356,7 @@ svg {
 /* Flower overlay on top of circle photos */
 .photo-flowers {
   position: absolute;
-  left: -2.5%;
+  left: -1.125%;
   transform: translateX(-50%);
   bottom: -18px;
   width: 240px;
