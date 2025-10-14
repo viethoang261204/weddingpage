@@ -1351,16 +1351,23 @@ svg {
   }
 }
 
-/* Flower accent under circle photos */
+.photo-frame-container { position: relative; }
+
+/* Flower overlay on top of circle photos */
 .photo-flowers {
   position: absolute;
-  bottom: -10px;
-  right: -20px;
-  width: 140px;
-  opacity: 0.4;
-  filter: blur(0.3px);
-  animation: flowerFloat 5s ease-in-out infinite;
+  left: -2.5%;
+  transform: translateX(-50%);
+  bottom: -18px;
+  width: 240px;
+  opacity: 1; /* fully clear */
+  filter: none;
+  z-index: 3;
   pointer-events: none;
+  animation: flowerFloat 5s ease-in-out infinite;
+}
+@media (min-width: 992px) { 
+  .photo-flowers { width: 300px; bottom: -20px; }
 }
 @keyframes flowerFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.35; }
