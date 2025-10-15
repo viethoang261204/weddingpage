@@ -425,25 +425,50 @@
     ></script>
     
     <script>
-        // Check if logged in
-        if (localStorage.getItem('adminLoggedIn') !== 'true') {
-            window.location.href = '../login/?redirect=dashboard';
-        }
-        
+        // Supabase config
+        const SUPABASE_URL = 'https://vmrgllqahkoyveejurwf.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZtcmdsbHFhaGtveXZlZWp1cndmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MDEyMzYsImV4cCI6MjA3NjA3NzIzNn0.5XU8V1y2MLRZsUFV2QWpx1bC23PlIDPP41eZnOLYeo8';
+        const SUPABASE_TABLE = 'wishes';
+
+        // Remove localStorage login dependency
         let wishes = [];
         let currentFilter = 'all';
         let currentPage = 1;
         const itemsPerPage = 5;
-        
+
         // Load wishes on page load
         window.onload = function() {
             loadWishes();
         };
-        
-        function loadWishes() {
-            wishes = JSON.parse(localStorage.getItem('weddingWishes')) || [];
-            // Sort by newest first (timestamp descending)
-            wishes.sort((a, b) => b.id - a.id);
+
+        async function loadWishes() {
+            try {
+                const url = SUPABASE_URL + '/rest/v1/' + SUPABASE_TABLE + '?select=id,name,message,status,created_at&order=created_at.desc';
+                const resp = await fetch(url, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Accept': 'application/json'
+                    }
+                });
+                const text = await resp.text();
+                if (!resp.ok) throw new Error(text || ('HTTP ' + resp.status));
+                const rows = text ? JSON.parse(text) : [];
+                // Normalize
+                wishes = rows.map(r => ({
+                    id: r.id,
+                    name: r.name || 'Ẩn danh',
+                    presence: r.status === 'Có đến' ? 'yes' : r.status === 'Không đến' ? 'no' : 'maybe',
+                    message: r.message || '',
+                    guestInvited: '',
+                    createdAt: new Date(r.created_at).toLocaleString('vi-VN')
+                }));
+            } catch (err) {
+                console.error('Load wishes error:', err);
+                wishes = [];
+                const container = document.getElementById('wishesContainer');
+                container.innerHTML = `<div class="empty-state"><i class="fa-solid fa-triangle-exclamation"></i><p>Lỗi tải dữ liệu: ${String(err.message || err)}</p></div>`;
+            }
             updateStats();
             renderWishes();
         }
@@ -620,19 +645,37 @@
             renderWishes();
         }
         
-        function deleteWish(id) {
-            if (confirm('Bạn có chắc muốn xóa lời chúc này?')) {
-                wishes = wishes.filter(w => w.id !== id);
-                localStorage.setItem('weddingWishes', JSON.stringify(wishes));
-                loadWishes();
+        async function deleteWish(id) {
+            if (!confirm('Bạn có chắc muốn xóa lời chúc này?')) return;
+            try {
+                const resp = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?id=eq.${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    }
+                });
+                if (!resp.ok) throw new Error(await resp.text());
+                await loadWishes();
+            } catch (err) {
+                alert('Xóa không thành công: ' + (err.message || err));
             }
         }
         
-        function clearAllWishes() {
-            if (confirm('Bạn có chắc muốn xóa TẤT CẢ lời chúc? Hành động này không thể hoàn tác!')) {
-                wishes = [];
-                localStorage.setItem('weddingWishes', JSON.stringify(wishes));
-                loadWishes();
+        async function clearAllWishes() {
+            if (!confirm('Bạn có chắc muốn xóa TẤT CẢ lời chúc? Hành động này không thể hoàn tác!')) return;
+            try {
+                const resp = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    }
+                });
+                if (!resp.ok) throw new Error(await resp.text());
+                await loadWishes();
+            } catch (err) {
+                alert('Xóa tất cả không thành công: ' + (err.message || err));
             }
         }
         
@@ -670,11 +713,7 @@
         setInterval(loadWishes, 30000);
         
         function logout() {
-            if (confirm('Bạn có chắc muốn đăng xuất?')) {
-                localStorage.removeItem('adminLoggedIn');
-                localStorage.removeItem('adminLoginTime');
-                window.location.href = '../login/';
-            }
+            window.location.href = '../trangchu/';
         }
     </script>
 </body>
