@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="../assets/images/iconthiepcuoi.png" />
-    <title id="page-title">Thư mời cưới</title>
+    <title id="page-title">💕 Thanh Phương & Khương Huy | Welcome to our wedding 💕</title>
     
     <!-- Guest Name Handler -->
     <script>
@@ -18,16 +18,19 @@
         }
       }
       
-      // Check if guest parameter exists and set title
+      // Build title: default couple title; if guest provided, use guest format
       const urlParams = new URLSearchParams(window.location.search);
       const guestParam = urlParams.get('to');
-      
+      const defaultTitle = '💕 Thanh Phương & Khương Huy | Welcome to our wedding 💕';
+
+      let computedTitle = defaultTitle;
       if (guestParam) {
         const guestName = decodeGuestName(guestParam);
         if (guestName) {
-          document.title = 'Thư mời cưới ' + guestName;
+          computedTitle = `💕 ${guestName} và người thương | Welcome to our wedding 💕`;
         }
       }
+      document.title = computedTitle;
     </script>
 
     <!-- SEO Tag -->
@@ -230,7 +233,7 @@
             <img
               src="../assets/images/anhcuoi21.jpg"
               alt="bg"
-              class="position-absolute top-50 start-50 translate-middle extra-down bg-cover-home"
+              class="position-absolute bg-cover-home"
             />
 
             <div
@@ -248,16 +251,16 @@
               <div class="text-center text-md-end pe-md-5">
                 <h2 class="font-esthetic couple-names-title my-4" style="font-size: 4.5rem;color: white !important">
                   Thanh Phương <br> &amp; <br> Khương Huy
-                </h2>
+              </h2>
                 <p class="my-2" style="font-size: 3rem; color: white !important">01-11-2025</p>
 
-                <button
+              <button
                   class="btn btn-outline-auto btn-sm shadow rounded-pill px-3 py-1 btn-fancy"
                   style="font-size: 0.95rem;color: white;"
-                >
-                  <i class="fa-solid fa-calendar-check me-2" style="color:white"></i>Lưu vào Google
-                  Lịch
-                </button>
+              >
+                  <i class="fa-solid fa-calendar-check me-2" ></i>Lưu vào Google
+                Lịch
+              </button>
               </div>
 
               <div
@@ -281,33 +284,33 @@
                   <div class="center-couple-title text-center">
                     <div class="headline-couple" style="font-size: 1.25rem; letter-spacing: 2px; text-shadow: 0 2px 8px rgba(0,0,0,.35); margin-bottom: .5rem;">CHÚNG MÌNH CƯỚI</div>
                     <h2 class="font-esthetic m-0" style="font-size: 4rem">Nguyễn Khương Huy</h2>
-                    <div class="font-esthetic my-2" style="font-size: 2.5rem">&amp;</div>
+                    <div class="font-esthetic my-2 ampersand-center" style="font-size: 2.5rem">&amp;</div>
                     <h2 class="font-esthetic m-0" style="font-size: 4rem">Lê Thanh Phương</h2>
                     <div class="date-ribbon mt-3" style="font-size: 2rem"><span>01 Tháng 11, 2025</span></div>
                   </div>
                 </div>
 
-                <!-- Chú rể - Left side -->
+              <!-- Chú rể - Left side -->
                 <div class="col-6 position-relative reveal fly-left">
 
                   <div class="text-center px-4" data-aos="fade-right" data-aos-duration="2000">
-                    <div class="photo-frame-container">
-                      <div class="photo-frame-sparkle">
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                      </div>
+                  <div class="photo-frame-container">
+                    <div class="photo-frame-sparkle">
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                    </div>
                       <div style="position: relative; display: inline-block;">
-                        <img
+                    <img
                           src="../assets/images/anhcuoi5.jpg"
-                          alt="cowo"
-                          onclick="undangan.guest.modal(this)"
-                          class="img-center-crop rounded-circle border border-3 border-light shadow my-4 mx-auto cursor-pointer"
+                      alt="cowo"
+                      onclick="undangan.guest.modal(this)"
+                      class="img-center-crop rounded-circle border border-3 border-light shadow my-4 mx-auto cursor-pointer"
                           style="object-position: 40% 50%; position: relative; z-index: 2; width: 200px;"
                         />
                         <img
@@ -316,34 +319,35 @@
                           style="position: absolute; top: -120px; right: -73px; z-index: 3; filter: blur(1.4px);"
                         />
                       </div>
-                      <div class="photo-branches">
-                        <div class="branch-left"></div>
-                        <div class="branch-right"></div>
-                      </div>
+                    <div class="photo-branches">
+                      <div class="branch-left"></div>
+                      <div class="branch-right"></div>
                     </div>
                   </div>
                 </div>
+              </div>
+
 
                 <!-- Cô dâu - Right side -->
                 <div class="col-6 position-relative reveal fly-right">
 
                   <div class="text-center px-4" data-aos="fade-left" data-aos-duration="2000">
-                    <div class="photo-frame-container">
-                      <div class="photo-frame-sparkle">
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                        <div class="sparkle-dot"></div>
-                      </div>
-                      <img
+                  <div class="photo-frame-container">
+                    <div class="photo-frame-sparkle">
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                      <div class="sparkle-dot"></div>
+                    </div>
+                    <img
                         src="../assets/images/anhcuoi4.jpg"
-                        alt="cewe"
-                        onclick="undangan.guest.modal(this)"
-                        class="img-center-crop rounded-circle border border-3 border-light shadow my-4 mx-auto cursor-pointer"
+                      alt="cewe"
+                      onclick="undangan.guest.modal(this)"
+                      class="img-center-crop rounded-circle border border-3 border-light shadow my-4 mx-auto cursor-pointer"
                         style="position: relative; z-index: 2; object-position: 20% 20%;"
                       />
 
@@ -351,116 +355,86 @@
                            src="../assets/images/anhcanhhoa2.png"
                            alt="flower decoration"
                            style="position: absolute; top: -10px; right: -180px; z-index: 3; filter: blur(1px);"
-                         />
-                      <div class="photo-branches">
-                        <div class="branch-left"></div>
-                        <div class="branch-right"></div>
-                      </div>
+                    />
+                    <div class="photo-branches">
+                      <div class="branch-left"></div>
+                      <div class="branch-right"></div>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Mobile: Vertical layout -->
-            <div class="d-md-none overflow-x-hidden pb-4">
-              <div class="position-relative">
-                <!-- Love animation -->
-                <div class="position-absolute" style="top: 0%; right: 5%">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    class="opacity-50"
-                    data-time="500"
-                    data-class="animate-love"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
-                    />
-                  </svg>
                 </div>
 
-                <div
-                  data-aos="fade-right"
-                  data-aos-duration="2000"
-                  class="pb-1"
-                >
-                  <div class="photo-frame-container">
-                    <div class="photo-frame-sparkle">
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                    </div>
+            <!-- Mobile: Vertical layout -->
+            <div class="d-md-none pb-4">
+              <!-- Groom Photo (Top) -->
+              <div class="position-relative mb-4" style="margin-top: 3rem;">
+                <div class="photo-frame-container">
+                  <div class="photo-frame-sparkle">
+                    <div class="sparkle-dot"></div>
+                    <div class="sparkle-dot"></div>
+                    <div class="sparkle-dot"></div>
+                    <div class="sparkle-dot"></div>
+                  </div>
+                  <div style="position: relative; display: inline-block;">
                     <img
-                      src="../assets/images/placeholder.webp"
-                      data-src="../assets/images/cowo.webp"
+                      src="../assets/images/anhcuoi5.jpg"
                       alt="cowo"
                       onclick="undangan.guest.modal(this)"
                       class="img-center-crop rounded-circle border border-3 border-light shadow my-4 mx-auto cursor-pointer"
-                      style="position: relative; z-index: 2;"
+                      style="object-position: 40% 50%; position: relative; z-index: 2; width: 200px;"
                     />
-                    <img src="../assets/images/anhhoa.png" alt="flower" class="photo-flowers" />
-                    <div class="photo-branches">
-                      <div class="branch-left"></div>
-                      <div class="branch-right"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <h2 class="font-esthetic mt-4" style="font-size: 3rem">&amp;</h2>
-
-              <div class="position-relative">
-                <!-- Love animation -->
-                <div class="position-absolute" style="top: 0%; right: 5%">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    class="opacity-50"
-                    data-time="3000"
-                    data-class="animate-love"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
-                    />
-                  </svg>
-                </div>
-
-                <div data-aos="fade-left" data-aos-duration="2000" class="pb-1">
-                  <div class="photo-frame-container">
-                    <div class="photo-frame-sparkle">
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                      <div class="sparkle-dot"></div>
-                    </div>
                     <img
-                        src="../assets/images/placeholder.webp"
-                        data-src="../assets/images/cewe.webp"
+                      src="../assets/images/anhcanhhoa1.png"
+                      alt="flower decoration"
+                      style="position: absolute; top: -20px; right: -20px; z-index: 3; width: 30px; height: 30px;"
+                    />
+                </div>
+                  <div class="photo-branches">
+                    <div class="branch-left"></div>
+                    <div class="branch-right"></div>
+              </div>
+            </div>
+              </div>
+
+              <!-- Centered Couple Names & Date -->
+              <div class="text-center mb-4">
+                <div class="center-couple-title">
+                  <div class="headline-couple" style="font-size: 1rem; letter-spacing: 1px; text-shadow: 0 2px 8px rgba(0,0,0,.35); margin-bottom: .5rem;">CHÚNG MÌNH CƯỚI</div>
+                  <h2 class="font-esthetic m-0" style="font-size: 2.5rem">Nguyễn Khương Huy</h2>
+                  <div class="font-esthetic my-2 ampersand-center" style="font-size: 2rem">&amp;</div>
+                  <h2 class="font-esthetic m-0" style="font-size: 2.5rem">Lê Thanh Phương</h2>
+                  <div class="date-ribbon mt-3"><span>01 Tháng 11, 2025</span></div>
+                </div>
+          </div>
+
+              <!-- Bride Photo (Bottom) -->
+              <div class="position-relative">
+                <div class="photo-frame-container">
+                  <div class="photo-frame-sparkle">
+                    <div class="sparkle-dot"></div>
+                    <div class="sparkle-dot"></div>
+                    <div class="sparkle-dot"></div>
+                    <div class="sparkle-dot"></div>
+                  </div>
+                  <div style="position: relative; display: inline-block;">
+                    <img
+                      src="../assets/images/anhcuoi4.jpg"
                       alt="cewe"
                       onclick="undangan.guest.modal(this)"
                       class="img-center-crop rounded-circle border border-3 border-light shadow my-4 mx-auto cursor-pointer"
-                      style="position: relative; z-index: 2;"
+                      style="position: relative; z-index: 2; object-position: 20% 20%; width: 200px;"
                     />
-                      <img src="../assets/images/anhhoa.png" alt="flower" class="photo-flowers" />
-                    <div class="photo-branches">
-                      <div class="branch-left"></div>
-                      <div class="branch-right"></div>
-                    </div>
+                    <img
+                      src="../assets/images/anhcanhhoa2.png"
+                      alt="flower decoration"
+                      style="position: absolute; top: -20px; right: -20px; z-index: 3; width: 30px; height: 30px;"
+                    />
+                  </div>
+                  <div class="photo-branches">
+                    <div class="branch-left"></div>
+                    <div class="branch-right"></div>
                   </div>
                 </div>
               </div>
@@ -488,7 +462,7 @@
                   Câu chuyện tình yêu
                 </h2>
                 <div id="video-love-stroy" class="rounded-4 mb-2" data-src="../assets/video/265501_tiny.mp4" data-vid-class="w-80 rounded-4 shadow-sm m-0 p-0"></div>
-                  
+
                 <div class="position-relative">
                   <div class="p-2">
                     <div class="row">
@@ -538,11 +512,11 @@
               </div>
             </div>
           </section>
-          
+
           <!-- Wedding Date -->
           <section class="bg-white-black pb-2" id="wedding-date">
             <div class="container text-center">
-              <h2 class="font-esthetic py-4 m-0" style="font-size: 2.25rem">
+              <h2 class="font-esthetic py-4 m-0" style="font-size: 3rem">
                 Khoảnh khắc hạnh phúc
               </h2>
 
@@ -551,7 +525,7 @@
                   <div class="col-3 p-1">
                     <p
                       class="d-inline m-0 p-0"
-                      style="font-size: 1.25rem"
+                      style="font-size: 1.5rem"
                       id="day"
                     >
                       0
@@ -561,7 +535,7 @@
                   <div class="col-3 p-1">
                     <p
                       class="d-inline m-0 p-0"
-                      style="font-size: 1.25rem"
+                      style="font-size: 1.5rem"
                       id="hour"
                     >
                       0
@@ -571,7 +545,7 @@
                   <div class="col-3 p-1">
                     <p
                       class="d-inline m-0 p-0"
-                      style="font-size: 1.25rem"
+                      style="font-size: 1.5rem"
                       id="minute"
                     >
                       0
@@ -581,7 +555,7 @@
                   <div class="col-3 p-1">
                     <p
                       class="d-inline m-0 p-0"
-                      style="font-size: 1.25rem"
+                      style="font-size: 1.5rem"
                       id="second"
                     >
                       0
@@ -591,12 +565,12 @@
                 </div>
               </div>
 
-              <p class="py-2 m-0" style="font-size: 1rem">
+              <p class="py-2 m-0" style="font-size: 1.5rem">
                 Trong niềm hạnh phúc vô bờ và với lòng biết ơn,
                 <br />
                 chúng tôi trân trọng thông báo lễ thành hôn và kính mời
                 <br />
-                <strong id="guest-name" style="font-size: 2rem"
+                <strong id="guest-name" style="font-size: 2.25rem"
                   >Bạn</strong
                 >
                 <br />đến chung vui cùng gia đình trong ngày trọng đại:
@@ -687,7 +661,7 @@
                 </div>
                 
                 <div class="calendar-legend">
-                  <span class="wedding-day-label">
+                  <span class="wedding-day-label" style="color:whitesmoke">
                     💕 31/10 - Nhà gái | 01/11 - Hôn lễ
                   </span>
                 </div>
@@ -699,20 +673,20 @@
                   data-aos="fade-right"
                   data-aos-duration="1500"
                 >
-                  <h2 class="font-esthetic m-0 py-2" style="font-size: 2rem">
+                  <h2 class="font-esthetic m-0 py-2" style="font-size: 2.5rem">
                     Bữa cơm thân mật tại nhà gái
                   </h2>
-                  <p style="font-size: 0.95rem">16:30 - 31/10/2025 (11/09 Âm lịch)</p>
-                  <small class="d-block" style="font-size: 0.85rem">Số 34 ngõ 298/77/76 Ngọc Hồi, Thanh Trì, Hà Nội</small>
+                  <p style="font-size: 1.5rem">16:30 - 31/10/2025 (11/09 Âm lịch)</p>
+                  <small class="d-block" style="font-size: 1.5rem">Số 34 ngõ 298/77/76 Ngọc Hồi, Thanh Trì, Hà Nội</small>
                 </div>
 
                 <div class="py-2" data-aos="fade-left" data-aos-duration="1500">
                   <div class="reveal fade-up">
-                  <h2 class="font-esthetic m-0 py-2" style="font-size: 2rem">
+                  <h2 class="font-esthetic m-0 py-2" style="font-size: 2.5rem">
                     Hôn lễ
                   </h2>
-                  <p style="font-size: 0.95rem">06:30 - 01/11/2025 (12/09 Âm lịch)</p>
-                  <small class="d-block" style="font-size: 0.85rem">Hương Cau Palace Restaurant, N15, Lô 7<br>KCN Bắc Trần Hưng Đạo, Xã Chủ Ngòi, Quỳnh Lâm, Hòa Bình</small>
+                  <p style="font-size: 1.5rem">06:30 - 01/11/2025 (12/09 Âm lịch)</p>
+                  <small class="d-block" style="font-size: 1.5rem">Hương Cau Palace Restaurant, N15, Lô 7<br>KCN Bắc Trần Hưng Đạo, Xã Chủ Ngòi, Quỳnh Lâm, Hòa Bình</small>
                   </div>
                 </div>
               </div>
@@ -777,16 +751,18 @@
           <!-- Love Gift -->
           <section class="bg-light-dark pb-3">
             <div class="container text-center">
-              <h2 class="font-esthetic pt-3 mb-4" style="font-size: 2.25rem">
+              <h2 class="font-esthetic pt-3 mb-4" style="font-size: 2.5rem">
                 Quà Tình Yêu
               </h2>
-              <p class="mb-1" style="font-size: 0.95rem">
+              <p class="mb-1" style="font-size: 1.5rem">
                 Trân trọng, đối với những ai muốn gửi tặng chúng tôi tấm lòng
                 yêu thương, xin vui lòng thông qua:
               </p>
 
+              <div class="row g-3 mt-3">
+                <div class="col-12 col-md-6" id="cardTf">
               <div
-                class="bg-theme-auto rounded-4 shadow p-3 mx-4 mt-4 text-start reveal fade-up"
+                    class="bg-theme-auto rounded-4 shadow p-3 text-start reveal fade-up"
                 data-aos="fade-up"
                 data-aos-duration="2500"
               >
@@ -796,16 +772,12 @@
                 <div
                   class="d-flex justify-content-between align-items-center mt-2"
                 >
-                  <p class="m-0 p-0" style="font-size: 0.95rem">
+                  <p class="m-0 p-0" style="font-size: 1.25rem">
                     <i class="fa-regular fa-user fa-sm me-1"></i>Lê Thanh Phương
                   </p>
                   <button
-                    class="btn btn-outline-auto btn-sm shadow-sm rounded-4 py-0"
-                    style="
-                      font-size: 0.75rem;
-                      display: flex;
-                      align-items: center;
-                    "
+                      class="btn btn-outline-auto btn-sm shadow-sm rounded-4 py-0 info-btn"
+                      style="font-size: 0.75rem; display: flex; align-items: center;"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseTf"
                   >
@@ -813,7 +785,7 @@
                   </button>
                 </div>
 
-                <div class="collapse" id="collapseTf">
+                <div class="collapse" id="collapseTf" data-bs-parent="#cardTf">
                   <hr class="my-2 py-1" />
                   <p class="m-0 text-center" style="font-size: 0.9rem">
                     <i class="fa-solid fa-building-columns me-1"></i>VP BANK
@@ -842,31 +814,28 @@
                         class="img-fluid rounded-3 bg-white"
                         style="max-width: 300px;"
                       />
-                  </div>
                 </div>
               </div>
-
+                </div>
+                </div>
+                <div class="col-12 col-md-6" id="cardQris">
               <div
-                class="bg-theme-auto rounded-4 shadow p-3 mx-4 mt-4 text-start reveal fade-up"
+                    class="bg-theme-auto rounded-4 shadow p-3 text-start reveal fade-up"
                 data-aos="fade-up"
                 data-aos-duration="2500"
               >
                 <i class="fa-solid fa-qrcode fa-lg"></i>
-                <p class="d-inline">MB BANK</p>
+                <p class="d-inline">VietinBank</p>
 
                 <div
                   class="d-flex justify-content-between align-items-center mt-2"
                 >
-                  <p class="m-0 p-0" style="font-size: 0.95rem">
+                  <p class="m-0 p-0" style="font-size: 1.25rem">
                     <i class="fa-regular fa-user fa-sm me-1"></i> Khương Huy
                   </p>
                   <button
-                    class="btn btn-outline-auto btn-sm shadow-sm rounded-4 py-0"
-                    style="
-                      font-size: 0.75rem;
-                      display: flex;
-                      align-items: center;
-                    "
+                    class="btn btn-outline-auto btn-sm shadow-sm rounded-4 py-0 info-btn"
+                    style="font-size: 0.75rem; display: flex; align-items: center;"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseQris"
                   >
@@ -874,10 +843,10 @@
                   </button>
                 </div>
 
-                <div class="collapse" id="collapseQris">
+                <div class="collapse" id="collapseQris" data-bs-parent="#cardQris">
                   <hr class="my-2 py-1" />
                   <p class="m-0 text-center" style="font-size: 0.9rem">
-                    <i class="fa-solid fa-building-columns me-1"></i>MB BANK
+                    <i class="fa-solid fa-building-columns me-1"></i>VietinBank
                   </p>
                   <div
                     class="d-flex justify-content-between align-items-center mt-2"
@@ -904,6 +873,8 @@
                     />
                   </div>
                 </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -911,14 +882,14 @@
           <!-- Comment -->
           <section class="bg-light-dark my-0 pb-4 pt-3" id="comment">
             <div class="container">
-              <h2 class="font-esthetic text-center mt-2 mb-4" style="font-size: 2.25rem">Gửi Lời Chúc Phúc</h2>
-              <p class="text-center mb-4">Chúng tôi rất mong nhận được lời chúc từ bạn! 💕</p>
+              <h2 class="font-esthetic text-center mt-2 mb-4" style="font-size: 2.5rem">Gửi Lời Chúc Phúc</h2>
+              <p class="text-center mb-4"style="font-size: 1.5rem">Chúng tôi rất mong nhận được lời chúc từ bạn! 💕</p>
               
               <div class="row justify-content-center">
                 <div class="col-12 col-lg-10">
-                  <div class="border rounded-4 shadow p-4 bg-theme-auto">
+                  <div class="border rounded-4 shadow p-0 bg-theme-auto letter-card">
                   <div class="reveal fade-up">
-                    <form id="wishForm">
+                    <form id="wishForm" class="letter-form">
                       <div class="row">
                         <div class="col-md-6 mb-3">
                         <label for="wishName" class="form-label">
@@ -926,7 +897,7 @@
                         </label>
                         <input 
                           type="text" 
-                          class="form-control rounded-3" 
+                          class="form-control rounded-3 letter-input" 
                           id="wishName" 
                           placeholder="Nhập tên của bạn"
                           required
@@ -937,7 +908,7 @@
                         <label for="wishPresence" class="form-label">
                           <i class="fa-solid fa-calendar-check"></i> Xác nhận tham dự
                         </label>
-                        <select class="form-select rounded-3" id="wishPresence" required>
+                        <select class="form-select rounded-3 letter-input" id="wishPresence" required>
                           <option value="yes">✅ Tôi sẽ đến</option>
                           <option value="no">❌ Rất tiếc không thể tham dự</option>
                           <option value="maybe">🤔 Chưa chắc chắn</option>
@@ -950,7 +921,7 @@
                           <i class="fa-solid fa-message"></i> Lời chúc của bạn
                         </label>
                         <textarea 
-                          class="form-control rounded-3" 
+                          class="form-control rounded-3 letter-textarea" 
                           id="wishMessage" 
                           rows="4"
                           placeholder="Viết lời chúc của bạn tại đây..."
@@ -958,10 +929,10 @@
                         ></textarea>
                       </div>
                       
-                      <div class="d-grid">
+                      <div class="text-center pb-4">
                         <button 
                           type="submit" 
-                          class="btn btn-primary rounded-3 py-2"
+                          class="btn rounded-pill px-5 py-2 wax-seal-btn"
                           id="submitWishBtn"
                         >
                           <i class="fa-solid fa-paper-plane"></i> Gửi Lời Chúc

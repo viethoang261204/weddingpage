@@ -2,6 +2,11 @@
 ((window) => {
     'use strict';
 
+    // ===== Supabase (REST) config =====
+    const SUPABASE_URL = 'https://vmrgllqahkoyveejurwf.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZtcmdsbHFhaGtveXZlZWp1cndmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MDEyMzYsImV4cCI6MjA3NjA3NzIzNn0.5XU8V1y2MLRZsUFV2QWpx1bC23PlIDPP41eZnOLYeo8';
+    const SUPABASE_TABLE = 'wishes';
+
     // ============ THEME ============
     const theme = {
         check: () => {
@@ -151,6 +156,36 @@
             button.innerHTML = '<i class="fa-solid fa-check"></i>';
             setTimeout(() => button.innerHTML = original, 1500);
         });
+    };
+
+    // ============ TOAST NOTIFICATION ============
+    const showToast = (message, type = 'success') => {
+        // Ensure container
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'toast-container position-fixed end-0 p-3';
+            container.style.bottom = '5.5rem'; // above floating navbar
+            container.style.zIndex = '1100';
+            document.body.appendChild(container);
+        }
+
+        const bgClass = type === 'success' ? 'text-bg-success' : type === 'error' ? 'text-bg-danger' : 'text-bg-secondary';
+        const toast = document.createElement('div');
+        toast.className = `toast align-items-center ${bgClass} border-0 shadow`; 
+        toast.role = 'alert';
+        toast.ariaLive = 'assertive';
+        toast.ariaAtomic = 'true';
+        toast.setAttribute('data-bs-delay', '3500');
+        toast.innerHTML = `<div class="d-flex"><div class="toast-body">${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>`;
+
+        container.appendChild(toast);
+        const bsToast = new bootstrap.Toast(toast);
+        bsToast.show();
+
+        // cleanup after hidden
+        toast.addEventListener('hidden.bs.toast', () => toast.remove());
     };
 
     // ============ OPEN INVITATION ============
@@ -304,7 +339,7 @@
             e.preventDefault();
 
             const name = document.getElementById('wishName').value.trim();
-            const presence = document.getElementById('wishPresence').value;
+            const presence = document.getElementById('wishPresence').value; // yes | no | maybe
             const message = document.getElementById('wishMessage').value.trim();
 
             if (!name || !message) return;
@@ -322,36 +357,35 @@
             const encodedName = urlParams.get('to');
             const guestName = encodedName ? decodeGuestName(encodedName) : 'Unknown';
 
-            // Create wish object
-            const wish = {
-                id: Date.now(),
-                name: name,
-                presence: presence,
-                message: message,
-                guestInvited: guestName,
-                timestamp: new Date().toISOString(),
-                createdAt: new Date().toLocaleString('vi-VN')
-            };
+            // Map presence to DB status
+            const statusMap = { yes: 'Có đến', no: 'Không đến', maybe: 'Chưa xác định' };
+            const status = statusMap[presence] || 'Chưa xác định';
 
-            // Save to localStorage
-            let wishes = JSON.parse(localStorage.getItem('weddingWishes')) || [];
-            wishes.unshift(wish);
-            localStorage.setItem('weddingWishes', JSON.stringify(wishes));
+            // Insert to Supabase REST
+            (async () => {
+                try {
+                    const resp = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': SUPABASE_ANON_KEY,
+                            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                        },
+                        body: JSON.stringify({ name, message, status })
+                    });
 
-            // Show success message
-            const successMsg = document.getElementById('wishSuccess');
-            successMsg.classList.remove('d-none');
+                    if (!resp.ok) {
+                        const txt = await resp.text();
+                        throw new Error(txt || 'Insert failed');
+                    }
 
-            // Clear form
-            wishForm.reset();
-
-            // Scroll to success message
-            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Hide success after 5 seconds
-            setTimeout(() => {
-                successMsg.classList.add('d-none');
-            }, 5000);
+                    showToast('Cảm ơn bạn đã gửi lời chúc! 💕', 'success');
+                    wishForm.reset();
+                } catch (err) {
+                    console.error('Supabase error:', err);
+                    showToast('Không gửi được. Vui lòng thử lại!', 'error');
+                }
+            })();
         });
     };
 

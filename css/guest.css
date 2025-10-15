@@ -13,6 +13,128 @@
     --wedding-gradient-accent: linear-gradient(135deg, var(--wedding-accent), var(--wedding-tertiary));
 }
 
+/* Remove any default top spacing and ensure hero sticks to top */
+html, body { margin: 0 !important; padding: 0 !important; }
+
+/* Home section: no top gap */
+#home { margin-top: 0 !important; padding-top: 0 !important; }
+
+/* Force hero background to fill and start at top-left (override translate classes) */
+#home .bg-cover-home {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+}
+
+/* Prevent inline-image baseline gap */
+#home img { display: block; }
+
+/* Letter-style Wish Form */
+.letter-card {
+  background: #fdfcf7 !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12) !important;
+}
+
+.letter-form {
+  position: relative;
+  padding: 2rem 2rem 1rem 2rem;
+}
+
+.letter-form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0),
+    rgba(0,0,0,0) 26px,
+    rgba(0,0,0,0.05) 27px,
+    rgba(0,0,0,0.05) 28px
+  );
+  pointer-events: none;
+}
+
+.letter-input, .letter-textarea {
+  background: rgba(255,255,255,0.8) !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.06) !important;
+  color: #000 !important;
+}
+
+.letter-textarea {
+  min-height: 160px;
+}
+
+/* Placeholder color softer */
+.letter-input::placeholder,
+.letter-textarea::placeholder,
+.form-control::placeholder {
+  color: rgba(0,0,0,.45) !important;
+}
+
+/* Add breathing room below comment section to avoid navbar overlap */
+#comment { margin-bottom: 7rem !important; }
+
+/* Toast position adjust for bottom-right */
+.toast-container { bottom: 5.5rem !important; }
+
+.wax-seal-btn {
+  background: radial-gradient(circle at 30% 30%, #49a020, #336600 70%) !important;
+  color: #fff !important;
+  border: none !important;
+  letter-spacing: .3px;
+  box-shadow: 0 6px 14px rgba(51,102,0,.35) !important;
+}
+
+.wax-seal-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.letter-card .form-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .letter-form { padding: 1.25rem 1.25rem .75rem 1.25rem; }
+}
+
+/* Info button default color black */
+.info-btn,
+.info-btn i { color: #000 !important; }
+
+/* Center the ampersand between names */
+.ampersand-center {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  transform: translateX(10px) !important; /* nudge to the right */
+}
+
+@media (max-width: 767.98px) {
+  .ampersand-center {
+    transform: translateX(4px) !important; /* smaller nudge on mobile */
+  }
+}
+
+/* Button hover: text/icon turn black (for 'Lưu vào Google Lịch') */
+.btn-fancy:hover,
+.btn-outline-auto:hover {
+  color: #000 !important;
+}
+
+.btn-fancy:hover i,
+.btn-outline-auto:hover i {
+  color: #000 !important;
+}
+
 html {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
@@ -1603,6 +1725,56 @@ img[src$="anhcanhhoa3.png"] {
 
 img[src$="anhcanhhoa4.png"] {
   animation: flowerSway4 3.5s ease-in-out infinite;
+}
+
+/* Mobile responsive - chỉ áp dụng cho điện thoại */
+@media (max-width: 767px) {
+  /* Giữ nguyên layout desktop, chỉ scale nhỏ lại cho mobile */
+  #bride {
+    margin-top: 4rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Scale toàn bộ section bride cho mobile */
+  #bride .d-none.d-md-block {
+    transform: scale(0.8);
+    transform-origin: center top;
+  }
+  
+  /* Điều chỉnh font size cho mobile */
+  #bride .center-couple-title h2 {
+    font-size: 2.5rem !important;
+  }
+  
+  #bride .center-couple-title .font-esthetic {
+    font-size: 2rem !important;
+  }
+  
+  #bride .headline-couple {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Điều chỉnh flower decorations cho mobile */
+  img[src$="anhcanhhoa1.png"] {
+    width: 25px !important;
+    height: 25px !important;
+  }
+  
+  img[src$="anhcanhhoa2.png"] {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  img[src$="anhcanhhoa3.png"] {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  img[src$="anhcanhhoa4.png"] {
+    width: 45px !important;
+    height: 45px !important;
+  }
 }
 html[data-bs-theme="light"] .couple-names-title {
   color: #2d4d00 !important; /* darker green for light theme */
