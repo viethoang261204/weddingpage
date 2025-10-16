@@ -1569,20 +1569,20 @@ html[data-bs-theme="light"] .headline-couple { color: #000000; text-shadow: 0 1p
 .extra-down { top: 60% !important; }
 @media (min-width: 992px) { .extra-down { top: 62% !important; } }
 
-/* Let hero background bleed into the wave area only upward */
+/* Hero section: keep image clipped and stable across widths */
 #home { 
   position: relative; 
-  overflow: visible !important; 
+  overflow: visible !important; /* clip background image inside hero */
   z-index: 10; /* Ensure home section stays above others */
   margin-bottom: 0 !important; /* Remove any default margin */
-  min-height: 20vh !important; /* Tăng height để dài ra */
+  min-height: 20vh !important; /* consistent hero height */
   padding-bottom: 3rem !important; /* Add padding for spacing */
 }
 #home .bg-cover-home { 
   position: absolute; 
   z-index: 2; 
-  height: 120% !important; 
-  top: 0; /* Ensure it starts from top */
+  height: 120% !important;
+  top: 10%;
 }
 
 /* Ensure wave wrappers participate in stacking order */
