@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Album cưới</title>
+    <link rel="stylesheet" href="../public/css/guest.css" />
+    <style>
+      /* Masonry - preserve aspect ratios */
+      #gallery .masonry-gallery { columns: 1; column-gap: 1rem; }
+      @media (min-width: 576px) { #gallery .masonry-gallery { columns: 2; } }
+      @media (min-width: 992px) { #gallery .masonry-gallery { columns: 3; } }
+      @media (min-width: 1400px) { #gallery .masonry-gallery { columns: 4; } }
+      #gallery .gallery-item { break-inside: avoid; margin-bottom: 1rem; border-radius: 1rem; overflow: hidden; }
+      #gallery .gallery-item img { width: 100%; height: auto; object-fit: contain; }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+  </head>
+  <body class="bg-light-dark">
+    <main id="gallery" class="container py-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="font-esthetic m-0" style="font-size: 2rem">Album cưới</h1>
+        <a href="/" class="btn btn-outline-auto btn-sm rounded-pill shadow px-4 btn-fancy" style="color: #000 !important;" onclick="if(document.referrer){location.href=document.referrer; return false;}">← Quay về trang chính</a>
+      </div>
+
+      <div class="masonry-gallery">
+        <script>
+          const container = document.currentScript.parentElement;
+          for (let i = 1; i <= 25; i++) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `<img src="../assets/images/anhcuoi${i}.jpg" alt="anhcuoi${i}" class="rounded-4 shadow cursor-pointer" onclick=\"undangan.guest.modal(this)\" />`;
+            container.appendChild(item);
+          }
+          for (let j = 1; j <= 3; j++) {
+            const k = ((j - 1) % 25) + 1;
+            const clone = document.createElement('div');
+            clone.className = 'gallery-item';
+            clone.innerHTML = `<img src="../assets/images/anhcuoi${k}.jpg" alt="anhcuoi${k}" class="rounded-4 shadow cursor-pointer" onclick=\"undangan.guest.modal(this)\" />`;
+            container.appendChild(clone);
+          }
+          const extra = document.createElement('div');
+          extra.className = 'gallery-item';
+          extra.innerHTML = `<img src="../assets/images/anhcuoi1.jpg" alt="anhcuoi1" class="rounded-4 shadow cursor-pointer" onclick=\"undangan.guest.modal(this)\" />`;
+          container.appendChild(extra);
+        </script>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="/" class="btn btn-outline-auto btn-sm rounded-pill shadow px-4 btn-fancy" style="color: #000 !important;" onclick="if(document.referrer){location.href=document.referrer; return false;}">← Quay về trang chính</a>
+      </div>
+    </main>
+    <script defer src="../public/dist/guest.js"></script>
+  </body>
+</html>
+
+

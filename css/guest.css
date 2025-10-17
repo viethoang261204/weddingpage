@@ -1,6 +1,29 @@
 @import url("common.css");
 @import url("animation.css");
 
+/* Date font import */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+/* Body copy font import (Lora) */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap');
+
+/* Utility: apply Great Vibes to date texts */
+.font-date { font-family: 'Great Vibes', cursive !important; color: #ffffff !important; }
+/* Apply to couple date ribbon but NOT the calendar */
+.date-ribbon span { font-family: 'Great Vibes', cursive !important; }
+
+/* Wedding Date section: force date/time and address text to black */
+#wedding-date .font-date { color: #000000 !important; }
+
+/* Remove bottom margin gap at the last section */
+section:last-of-type { margin-bottom: 0 !important; }
+#comment { margin-bottom: 0 !important; padding-bottom: 0 !important; background-color: #ffffff !important; }
+#comment .bg-theme-auto,
+#comment .bg-white-black,
+#comment .bg-light-dark { background-color: #ffffff !important; }
+/* Normalize comment section background completely */
+#comment .letter-card { background-color: #ffffff !important; box-shadow: none !important; }
+#comment .letter-form::before { background: none !important; }
+
 /* Custom Fonts */
 @font-face {
   font-family: 'Huova Demo Light';
@@ -23,6 +46,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'TH Maginia';
+  src: url('../font/TH Maginia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Custom Wedding Color Palette */
 :root {
     --wedding-primary: #336600;     /* Xanh lá đậm - chủ đạo */
@@ -37,6 +67,10 @@
 
 /* Remove any default top spacing and ensure hero sticks to top */
 html, body { margin: 0 !important; padding: 0 !important; }
+/* Set page background to pure white to match sections and avoid mismatch at bottom spacing */
+html, body { background-color: #ffffff !important; }
+/* Ensure all sections share the same background tone */
+section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ffffff !important; }
 
 /* Home section: fixed height and contain image */
 #home { 
@@ -47,7 +81,7 @@ html, body { margin: 0 !important; padding: 0 !important; }
   max-height: 100vh !important;
   position: relative !important;
   overflow: hidden !important;
-  background-color: white !important;
+  background-color: #FFFCE6 !important;
 }
 
 /* Force hero background to fill and stay within section */
@@ -67,7 +101,7 @@ html, body { margin: 0 !important; padding: 0 !important; }
 
 /* Letter-style Wish Form */
 .letter-card {
-  background: #fdfcf7 !important;
+  background: #FFFCE6 !important; /* match page tone to avoid darker block */
   border-radius: 20px !important;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,.12) !important;
@@ -86,8 +120,8 @@ html, body { margin: 0 !important; padding: 0 !important; }
     to bottom,
     rgba(0,0,0,0),
     rgba(0,0,0,0) 26px,
-    rgba(0,0,0,0.05) 27px,
-    rgba(0,0,0,0.05) 28px
+    rgba(0,0,0,0.03) 27px, /* lighten guideline to avoid darkening */
+    rgba(0,0,0,0.03) 28px
   );
   pointer-events: none;
 }
@@ -155,6 +189,16 @@ html, body { margin: 0 !important; padding: 0 !important; }
   .ampersand-center {
     transform: translateX(4px) !important; /* smaller nudge on mobile */
   }
+  /* Center couple names block on mobile */
+  #home .couple-names-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 90% !important;
+    transform: none !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  #home .text-center.text-md-end.pe-md-5 { padding-right: 0 !important; }
 }
 
 /* Button hover: text/icon turn black (for 'Lưu vào Google Lịch') */
@@ -179,13 +223,13 @@ html {
 }
 
 .font-esthetic {
-    font-family: 'Dancing Script', cursive !important;
-    font-weight: 600 !important;
+    font-family: 'TH Maginia', 'Dancing Script', cursive !important;
+    font-weight: normal !important;
 }
 
 /* Font cho Wedding Day */
 .font-wedding-day {
-    font-family: 'Huova Demo Light', 'Arial', 'Helvetica', sans-serif !important;
+    font-family: 'TH Maginia', 'Arial', 'Helvetica', sans-serif !important;
     font-weight: normal !important;
 }
 
@@ -214,19 +258,21 @@ html {
 }
 
 /* Enhanced text styling */
-p, small {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
-    letter-spacing: 0.3px;
+p, small, label, li, input, textarea, button { 
+    font-family: 'Lora', Georgia, 'Times New Roman', serif !important; 
+    font-size: 1.05rem; 
+    letter-spacing: 0.3px; 
 }
 
 h1, h2, h3 {
+    font-family: 'TH Maginia', 'Arial', 'Helvetica', sans-serif !important;
+    font-weight: normal !important;
     letter-spacing: 1px;
 }
 
 /* Special styling for names */
 .name-highlight {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'TH Maginia', 'Great Vibes', cursive;
     font-size: 1.2em;
     color: var(--wedding-primary);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
@@ -240,7 +286,7 @@ h1, h2, h3 {
     object-fit: cover;
 }
 
-/* Masonry Gallery Grid - Natural Layout */
+/* Masonry theo cột – giữ nguyên tỉ lệ ảnh */
 .masonry-gallery {
     columns: 1;
     column-gap: 1rem;
@@ -267,12 +313,8 @@ h1, h2, h3 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Landscape images span full width across columns */
-.gallery-item.landscape {
-    column-span: all;
-    width: 100%;
-    margin-bottom: 1.5rem;
-}
+/* Landscape modifier not needed for grid; keep width 100% */
+.gallery-item.landscape { width: 100%; }
 
 .gallery-item:hover {
     transform: translateY(-5px);
@@ -281,8 +323,10 @@ h1, h2, h3 {
 
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: auto; /* Giữ đúng tỉ lệ ảnh */
     display: block;
+    object-fit: contain;
+    object-position: center;
     transition: transform 0.5s ease, filter 0.3s ease;
 }
 
@@ -1026,7 +1070,7 @@ canvas {
     border-bottom: 2px solid var(--wedding-secondary);
     background: var(--wedding-gradient);
     border-radius: 10px;
-    color: white;
+    color: #ffffff !important; /* Tháng 10 & 11, 2025 to white */
     font-weight: 600;
 }
 
@@ -1132,7 +1176,7 @@ canvas {
     align-items: center;
     gap: 5px;
     background: var(--wedding-gradient);
-    color: white;
+    color: #ffffff !important; /* make legend text white */
     padding: 4px 8px;
     border-radius: 12px;
     font-size: 0.75rem;
@@ -1501,7 +1545,7 @@ svg {
 #wedding-date .calendar-header {
     font-size: 1.25rem;
 }
-#wedding-date .calendar-header { font-size: 1.35rem; }
+#wedding-date .calendar-header { font-size: 1.45rem; }
 #wedding-date .calendar-day { font-size: 1.1rem; }
 
 /* Event info blocks below calendar */
@@ -1654,6 +1698,10 @@ html[data-bs-theme="light"] .headline-couple { color: #000000; text-shadow: 0 1p
 #home .position-relative.text-center.bg-overlay-auto {
   position: relative;
   z-index: 3; /* ensure text and circle photo sit above */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center vertically */
+  min-height: 100vh; /* match section height */
 }
 
 /* Couple names title - high contrast */
@@ -1843,6 +1891,19 @@ html, body { overflow-x: hidden; }
 
 #savethedate {
     color:white !important;
+}
+
+/* Welcome card (Save the Date) - spacing fixes */
+.wedding-card h2.font-esthetic { 
+  margin-top: 1rem !important; 
+  margin-bottom: 1rem !important; 
+  line-height: 1.3 !important; 
+}
+.wedding-card .img-center-crop { 
+  margin-bottom: 1.25rem !important; 
+}
+.wedding-card .btn-wedding-primary { 
+  margin-top: 1rem !important; 
 }
 
 /* ===== GALLERY CAROUSEL STYLES ===== */
