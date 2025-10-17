@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 /* Body copy font import (Lora) */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap');
+/* Display script font for headings/names */
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 
 /* Utility: apply Great Vibes to date texts */
 .font-date { font-family: 'Great Vibes', cursive !important; color: #ffffff !important; }
@@ -223,13 +225,13 @@ html {
 }
 
 .font-esthetic {
-    font-family: 'TH Maginia', 'Dancing Script', cursive !important;
+    font-family: 'Allura', cursive !important;
     font-weight: normal !important;
 }
 
 /* Font cho Wedding Day */
 .font-wedding-day {
-    font-family: 'TH Maginia', 'Arial', 'Helvetica', sans-serif !important;
+    font-family: 'Allura', cursive !important;
     font-weight: normal !important;
 }
 
@@ -265,14 +267,14 @@ p, small, label, li, input, textarea, button {
 }
 
 h1, h2, h3 {
-    font-family: 'TH Maginia', 'Arial', 'Helvetica', sans-serif !important;
+    font-family: 'Allura', cursive !important;
     font-weight: normal !important;
     letter-spacing: 1px;
 }
 
 /* Special styling for names */
 .name-highlight {
-    font-family: 'TH Maginia', 'Great Vibes', cursive;
+    font-family: 'Allura', 'Great Vibes', cursive;
     font-size: 1.2em;
     color: var(--wedding-primary);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
