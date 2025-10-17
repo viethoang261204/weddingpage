@@ -1,0 +1,24 @@
+/* Custom Font Declarations */
+@font-face {
+  font-family: 'Huova Demo Light';
+  src: url('../../font/HuovaDemo-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'UTM Beautiful Caps';
+  src: url('../../font/UTM-Beautiful-Caps.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Light';
+  src: url('../../font/Montserrat Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}

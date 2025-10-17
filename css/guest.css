@@ -1,6 +1,28 @@
 @import url("common.css");
 @import url("animation.css");
 
+/* Custom Fonts */
+@font-face {
+  font-family: 'Huova Demo Light';
+  src: url('../font/HuovaDemo-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'UTM Beautiful Caps';
+  src: url('../font/UTM-Beautiful-Caps.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat Light';
+  src: url('../font/Montserrat Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Custom Wedding Color Palette */
 :root {
     --wedding-primary: #336600;     /* Xanh lá đậm - chủ đạo */
@@ -16,16 +38,27 @@
 /* Remove any default top spacing and ensure hero sticks to top */
 html, body { margin: 0 !important; padding: 0 !important; }
 
-/* Home section: no top gap */
-#home { margin-top: 0 !important; padding-top: 0 !important; }
+/* Home section: fixed height and contain image */
+#home { 
+  margin-top: 0 !important; 
+  padding-top: 0 !important; 
+  min-height: 100vh !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: white !important;
+}
 
-/* Force hero background to fill and start at top-left (override translate classes) */
+/* Force hero background to fill and stay within section */
 #home .bg-cover-home {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
   transform: none !important;
 }
 
@@ -148,6 +181,12 @@ html {
 .font-esthetic {
     font-family: 'Dancing Script', cursive !important;
     font-weight: 600 !important;
+}
+
+/* Font cho Wedding Day */
+.font-wedding-day {
+    font-family: 'Huova Demo Light', 'Arial', 'Helvetica', sans-serif !important;
+    font-weight: normal !important;
 }
 
 .font-arabic {
@@ -1804,4 +1843,113 @@ html, body { overflow-x: hidden; }
 
 #savethedate {
     color:white !important;
+}
+
+/* ===== GALLERY CAROUSEL STYLES ===== */
+/* Carousel container styles */
+.carousel-vertical,
+.carousel-horizontal {
+    position: relative;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    user-select: none;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.carousel-vertical::-webkit-scrollbar,
+.carousel-horizontal::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-track {
+    display: flex !important;
+    gap: 1rem;
+    scroll-behavior: smooth;
+    width: max-content;
+    min-width: 100%;
+}
+
+/* Carousel 1: 4 ảnh dọc */
+.carousel-vertical .carousel-item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    width: calc(25% - 0.75rem);
+    height: 300px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.carousel-vertical .carousel-item:hover {
+    transform: scale(1.02);
+}
+
+/* Carousel 2: 2 ảnh ngang song song */
+.carousel-horizontal .carousel-pair {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    display: flex;
+    gap: 1rem;
+    width: calc(100% - 0.5rem);
+}
+
+.carousel-horizontal .carousel-item-horizontal {
+    width: calc(50% - 0.5rem);
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.carousel-horizontal .carousel-item-horizontal:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .carousel-vertical .carousel-item {
+        width: calc(33.333% - 0.666rem);
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-vertical .carousel-item {
+        width: calc(50% - 0.5rem);
+        height: 200px;
+    }
+    
+    .carousel-horizontal .carousel-item-horizontal {
+        height: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-vertical .carousel-item {
+        width: calc(100% - 0.5rem);
+        height: 180px;
+    }
+    
+    .carousel-horizontal .carousel-pair {
+        flex-direction: column;
+    }
+    
+    .carousel-horizontal .carousel-item-horizontal {
+        width: 100%;
+        height: 120px;
+    }
 }
