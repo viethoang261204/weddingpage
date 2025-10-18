@@ -21,6 +21,9 @@ services:
       - path: /font/**
         name: Cache-Control
         value: public, max-age=31536000, immutable
+      - path: /favicon/**
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
       - path: /**/*.html
         name: Cache-Control
         value: no-cache
@@ -33,4 +36,7 @@ services:
       - type: rewrite
         source: /album
         destination: /album/index.html
+      - type: rewrite
+        source: /favicon.ico
+        destination: /favicon/favicon.ico
 
