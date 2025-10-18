@@ -203,14 +203,12 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   #home .text-center.text-md-end.pe-md-5 { padding-right: 0 !important; }
 }
 
-/* Button hover: text/icon turn black (for 'Lưu vào Google Lịch') */
-.btn-fancy:hover,
-.btn-outline-auto:hover {
+/* Button hover: text/icon turn black (for 'Lưu vào Google Lịch' only) */
+.btn-fancy[onclick*="saveToGoogleCalendar"]:hover {
   color: #000 !important;
 }
 
-.btn-fancy:hover i,
-.btn-outline-auto:hover i {
+.btn-fancy[onclick*="saveToGoogleCalendar"]:hover i {
   color: #000 !important;
 }
 
