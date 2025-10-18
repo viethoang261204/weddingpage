@@ -178,6 +178,62 @@
         showToast('Đang mở Google Calendar... 📅', 'success');
     };
 
+    // ============ GALLERY TOGGLE ============
+    const toggleFullGallery = () => {
+        const preview = document.getElementById('gallery-preview');
+        const full = document.getElementById('gallery-full');
+        const masonryContainer = full.querySelector('.masonry-gallery');
+        
+        if (!preview || !full || !masonryContainer) return;
+        
+        if (preview.style.display === 'none') {
+            // Show preview, hide full
+            preview.style.display = 'block';
+            full.style.display = 'none';
+        } else {
+            // Show full, hide preview
+            preview.style.display = 'none';
+            full.style.display = 'block';
+            
+            // Generate gallery items if not already generated
+            if (masonryContainer.children.length === 0) {
+                generateGalleryItems(masonryContainer);
+            }
+            
+            // Smooth scroll to gallery section
+            document.getElementById('gallery').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+    };
+
+    // ============ GENERATE GALLERY ITEMS ============
+    const generateGalleryItems = (container) => {
+        // Generate 25 main images
+        for (let i = 1; i <= 25; i++) {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `<img src="../assets/images/anhcuoi${i}.jpg" alt="anhcuoi${i}" class="rounded-4 shadow cursor-pointer" onclick="undangan.guest.modal(this)" />`;
+            container.appendChild(item);
+        }
+        
+        // Add some duplicate images for variety (like in original album)
+        for (let j = 1; j <= 3; j++) {
+            const k = ((j - 1) % 25) + 1;
+            const clone = document.createElement('div');
+            clone.className = 'gallery-item';
+            clone.innerHTML = `<img src="../assets/images/anhcuoi${k}.jpg" alt="anhcuoi${k}" class="rounded-4 shadow cursor-pointer" onclick="undangan.guest.modal(this)" />`;
+            container.appendChild(clone);
+        }
+        
+        // Add one more
+        const extra = document.createElement('div');
+        extra.className = 'gallery-item';
+        extra.innerHTML = `<img src="../assets/images/anhcuoi1.jpg" alt="anhcuoi1" class="rounded-4 shadow cursor-pointer" onclick="undangan.guest.modal(this)" />`;
+        container.appendChild(extra);
+    };
+
     // ============ TOAST NOTIFICATION ============
     const showToast = (message, type = 'success') => {
         // Ensure container
@@ -455,7 +511,8 @@
         },
         util: {
             copy,
-            saveToGoogleCalendar
+            saveToGoogleCalendar,
+            toggleFullGallery
         }
     };
 
