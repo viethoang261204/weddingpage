@@ -586,18 +586,24 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
     font-size: 0.9rem !important;
   }
   
-  /* More overlap on small mobile */
+  /* Proper spacing on small mobile */
   html body section:not(#home) {
-    margin-top: -60px !important;
-    border-radius: 25px 25px 0 0 !important;
+    margin-top: 15px !important;
+    border-radius: 25px !important;
+    padding: 25px 15px !important;
   }
   
   html body #love-story,
   html body section[data-section="love-story"],
   html body .love-story-section {
-    margin-top: -100px !important;
-    border-radius: 30px 30px 0 0 !important;
-    padding-top: 40px !important;
+    margin-top: 25px !important;
+    border-radius: 30px !important;
+    padding: 35px 15px !important;
+  }
+  
+  /* Add spacing between all sections on small mobile */
+  html body section + section {
+    margin-top: 25px !important;
   }
   
   /* Even smaller text on small mobile */
@@ -684,14 +690,15 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
     font-size: 0.8rem !important;
   }
   
-  /* Make sections below home overlap and cover home section */
+  /* Proper spacing between sections on mobile */
   html body section:not(#home) {
     position: relative !important;
     z-index: 10 !important;
-    margin-top: -50px !important;
+    margin-top: 20px !important;
     background: white !important;
-    border-radius: 20px 20px 0 0 !important;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+    padding: 30px 20px !important;
   }
   
   /* Specifically target love story section */
@@ -700,11 +707,16 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   html body .love-story-section {
     position: relative !important;
     z-index: 15 !important;
-    margin-top: -80px !important;
+    margin-top: 30px !important;
     background: white !important;
-    border-radius: 25px 25px 0 0 !important;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15) !important;
-    padding-top: 30px !important;
+    border-radius: 25px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    padding: 40px 20px !important;
+  }
+  
+  /* Add spacing between all sections */
+  html body section + section {
+    margin-top: 30px !important;
   }
   
   html body #home .row {
