@@ -158,6 +158,26 @@
         });
     };
 
+    // ============ GOOGLE CALENDAR ============
+    const saveToGoogleCalendar = () => {
+        // Wedding details
+        const weddingDate = '20251101'; // YYYYMMDD format
+        const startTime = '100000'; // HHMMSS format (10:00 AM)
+        const endTime = '140000'; // HHMMSS format (2:00 PM)
+        const title = 'Đám cưới Thanh Phương & Khương Huy';
+        const details = 'Chúng tôi rất vui mừng được mời bạn tham dự lễ cưới của chúng tôi. Hãy đến và chia sẻ niềm vui trong ngày đặc biệt này!';
+        const location = 'Hương Cau Palace Restaurant, N15, Lô 7 KCN Bắc Trần Hưng Đạo, Xã Chủ Ngòi, Quỳnh Lâm, Hòa Bình';
+        
+        // Create Google Calendar URL
+        const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${weddingDate}T${startTime}/${weddingDate}T${endTime}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+        
+        // Open Google Calendar in new tab
+        window.open(googleCalendarUrl, '_blank');
+        
+        // Show success message
+        showToast('Đang mở Google Calendar... 📅', 'success');
+    };
+
     // ============ TOAST NOTIFICATION ============
     const showToast = (message, type = 'success') => {
         // Ensure container
@@ -434,7 +454,8 @@
             showStory
         },
         util: {
-            copy
+            copy,
+            saveToGoogleCalendar
         }
     };
 
