@@ -203,13 +203,46 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   #home .text-center.text-md-end.pe-md-5 { padding-right: 0 !important; }
 }
 
-/* Button hover: text/icon turn black (for 'Lưu vào Google Lịch' only) */
+/* Google Calendar button - white border, no hover effect */
+.btn-fancy[onclick*="saveToGoogleCalendar"] {
+  border: 2px solid white !important;
+  color: white !important;
+  background: transparent !important;
+}
+
+.btn-fancy[onclick*="saveToGoogleCalendar"] i {
+  color: white !important;
+}
+
 .btn-fancy[onclick*="saveToGoogleCalendar"]:hover {
-  color: #000 !important;
+  border: 2px solid white !important;
+  color: white !important;
+  background: transparent !important;
 }
 
 .btn-fancy[onclick*="saveToGoogleCalendar"]:hover i {
-  color: #000 !important;
+  color: white !important;
+}
+
+/* Info buttons in money gift section - white border, no hover effect */
+.info-btn {
+  border: 2px solid white !important;
+  color: white !important;
+  background: transparent !important;
+}
+
+.info-btn i {
+  color: white !important;
+}
+
+.info-btn:hover {
+  border: 2px solid white !important;
+  color: white !important;
+  background: transparent !important;
+}
+
+.info-btn:hover i {
+  color: white !important;
 }
 
 html {

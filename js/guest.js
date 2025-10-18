@@ -195,16 +195,24 @@
             preview.style.display = 'none';
             full.style.display = 'block';
             
-            // Generate gallery items if not already generated
-            if (masonryContainer.children.length === 0) {
-                generateGalleryItems(masonryContainer);
-            }
-            
             // Smooth scroll to gallery section
             document.getElementById('gallery').scrollIntoView({ 
                 behavior: 'smooth', 
                 block: 'start' 
             });
+        }
+    };
+
+    // ============ PRELOAD GALLERY ON PAGE LOAD ============
+    const preloadGallery = () => {
+        const full = document.getElementById('gallery-full');
+        const masonryContainer = full?.querySelector('.masonry-gallery');
+        
+        if (masonryContainer && masonryContainer.children.length === 0) {
+            // Load gallery images asynchronously to avoid blocking page load
+            setTimeout(() => {
+                generateGalleryItems(masonryContainer);
+            }, 2000); // Wait 2 seconds after page load
         }
     };
 
@@ -492,6 +500,9 @@
         startLoveAnimation();
         setGuestName();
         initWishForm();
+        
+        // Preload gallery images
+        preloadGallery();
 
         // Setup theme button
         const themeBtn = document.getElementById('button-theme');
@@ -512,7 +523,8 @@
         util: {
             copy,
             saveToGoogleCalendar,
-            toggleFullGallery
+            toggleFullGallery,
+            preloadGallery
         }
     };
 
