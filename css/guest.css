@@ -209,6 +209,649 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
     text-align: center !important;
   }
   #home .text-center.text-md-end.pe-md-5 { padding-right: 0 !important; }
+  
+  /* Center all elements in home section on mobile */
+  #home .container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    height: 100vh !important;
+  }
+  
+  #home .row {
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  #home .col {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  #home .position-relative {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  /* Center text content container on mobile */
+  #home .text-content-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 90% !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  /* Change background image on mobile */
+  #home .bg-cover-home {
+    content: url('../assets/images/anhcuoi212.jpg') !important;
+  }
+  
+  /* Center text elements */
+  #home h1, #home h2, #home h3, #home h4, #home h5, #home h6 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  #home p, #home span, #home div {
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Reduce date size on mobile */
+  #home .font-date {
+    font-size: 1.4rem !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Center buttons */
+  #home .btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+  
+  /* Center couple names container */
+  #home .couple-names-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  /* Mobile positioning for flower decorations (768px and below) */
+  /* Canhhoa1 - top right - override inline styles on mobile */
+  img[src*="anhcanhhoa1.png"] {
+    top: -50% !important;
+    right: calc(-70% - 4px) !important;
+    width: 5% !important;
+    height: auto !important;
+    transform: scale(0.3) rotate(-35deg) !important;
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+  
+  /* Canhhoa2 - top left */
+  img[src*="anhcanhhoa2.png"] {
+    top: -20% !important;
+    left: -40% !important;
+    width: 25% !important;
+    height: auto !important;
+    transform: scale(0.4) rotate(15deg) !important;
+    animation: flowerShake2 3s ease-in-out infinite !important;
+  }
+  
+  /* Hide canhhoa3 and canhhoa4 on mobile */
+  img[src*="anhcanhhoa3.png"] {
+    display: none !important;
+  }
+  
+  img[src*="anhcanhhoa4.png"] {
+    display: none !important;
+  }
+  
+  /* Force override inline styles for canhhoa1 on mobile */
+  #home .position-relative img[src*="anhcanhhoa1.png"] {
+    top: -50% !important;
+    right: calc(-70% - 4px) !important;
+    width: 5% !important;
+    height: auto !important;
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+  
+  /* Additional force animation for canhhoa1 */
+  body #home .position-relative img[src*="anhcanhhoa1.png"] {
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+  
+  /* Additional override for animation */
+  body #home .position-relative img[src*="anhcanhhoa1.png"] {
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+}
+
+/* Flower shake animation */
+@keyframes flowerShake {
+  0%, 100% {
+    transform: scale(0.3) rotate(-35deg) translateX(0px) translateY(0px) !important;
+  }
+  25% {
+    transform: scale(0.3) rotate(-33deg) translateX(2px) translateY(-2px) !important;
+  }
+  50% {
+    transform: scale(0.3) rotate(-37deg) translateX(-2px) translateY(2px) !important;
+  }
+  75% {
+    transform: scale(0.3) rotate(-33deg) translateX(2px) translateY(0px) !important;
+  }
+}
+
+/* Flower shake animation for canhhoa2 */
+@keyframes flowerShake2 {
+  0%, 100% {
+    transform: scale(0.3) rotate(35deg) translateX(0px) translateY(0px) !important;
+  }
+  25% {
+    transform: scale(0.3) rotate(33deg) translateX(-2px) translateY(-2px) !important;
+  }
+  50% {
+    transform: scale(0.3) rotate(37deg) translateX(2px) translateY(2px) !important;
+  }
+  75% {
+    transform: scale(0.3) rotate(33deg) translateX(-2px) translateY(0px) !important;
+  }
+}
+
+/* Force animation for all canhhoa1 on mobile */
+@media (max-width: 768px) {
+  img[src*="anhcanhhoa1.png"] {
+    right: calc(-70% - 4px) !important;
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+  
+  /* Ultra high specificity for animation */
+  html body #home .position-relative img[src*="anhcanhhoa1.png"] {
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+}
+
+/* Global animation for canhhoa1 on mobile */
+@media (max-width: 768px) {
+  img[src*="anhcanhhoa1.png"] {
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+  
+  /* Global animation for canhhoa2 on mobile */
+  img[src*="anhcanhhoa2.png"] {
+    animation: flowerShake2 3s ease-in-out infinite !important;
+  }
+  
+  /* Ultra high specificity for canhhoa2 animation */
+  html body #home .position-relative img[src*="anhcanhhoa2.png"] {
+    animation: flowerShake2 3s ease-in-out infinite !important;
+  }
+  
+  /* Force date size on mobile with high specificity */
+  html body #home .font-date {
+    font-size: 1.4rem !important;
+  }
+  
+  html body #home p .font-date {
+    font-size: 1.4rem !important;
+  }
+}
+
+/* iPad layout - force mobile style */
+@media (max-width: 1024px) {
+  /* Center all elements in home section on iPad */
+  #home .container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    height: 100vh !important;
+  }
+  
+  #home .row {
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  #home .col {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  #home .position-relative {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  /* Center text content container on iPad */
+  #home .text-content-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 90% !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  /* Center text elements on iPad */
+  #home h1, #home h2, #home h3, #home h4, #home h5, #home h6 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  #home p, #home span, #home div {
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Center buttons on iPad */
+  #home .btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+  
+  /* Center couple names container on iPad */
+  #home .couple-names-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  /* Reduce text sizes on iPad */
+  #home h1, #home h2, #home h3 {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Wedding Day title - smaller on iPad */
+  #home h1.font-wedding-day {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  #home .font-esthetic {
+    font-size: 1.8rem !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Date size on iPad */
+  html body #home .font-date {
+    font-size: 1.6rem !important;
+  }
+  
+  html body #home p .font-date {
+    font-size: 1.6rem !important;
+  }
+  
+  /* Flower decorations on iPad */
+  img[src*="anhcanhhoa1.png"] {
+    top: -50% !important;
+    right: calc(-70% - 4px) !important;
+    width: 5% !important;
+    height: auto !important;
+    transform: scale(0.3) rotate(-35deg) !important;
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+  
+  img[src*="anhcanhhoa2.png"] {
+    top: -20% !important;
+    left: -40% !important;
+    width: 25% !important;
+    height: auto !important;
+    transform: scale(0.4) rotate(15deg) !important;
+    animation: flowerShake2 3s ease-in-out infinite !important;
+  }
+  
+  /* Hide canhhoa3 and canhhoa4 on iPad */
+  img[src*="anhcanhhoa3.png"] {
+    display: none !important;
+  }
+  
+  img[src*="anhcanhhoa4.png"] {
+    display: none !important;
+  }
+}
+
+/* Force smaller text sizes on small mobile */
+@media (max-width: 576px) {
+  /* Even smaller text for small mobile */
+  html body #home h1, 
+  html body #home h2, 
+  html body #home h3 {
+    font-size: 1rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Wedding Day title - smaller on small mobile */
+  html body #home h1.font-wedding-day {
+    font-size: 1.5rem !important;
+    line-height: 1.1 !important;
+  }
+  
+  /* Couple names - smaller on small mobile */
+  html body #home .font-esthetic {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Date size - smaller on small mobile */
+  html body #home .font-date {
+    font-size: 0.9rem !important;
+  }
+  
+  html body #home p .font-date {
+    font-size: 0.9rem !important;
+  }
+  
+  html body #home span .font-date {
+    font-size: 0.9rem !important;
+  }
+  
+  /* More overlap on small mobile */
+  html body section:not(#home) {
+    margin-top: -60px !important;
+    border-radius: 25px 25px 0 0 !important;
+  }
+  
+  html body #love-story,
+  html body section[data-section="love-story"],
+  html body .love-story-section {
+    margin-top: -100px !important;
+    border-radius: 30px 30px 0 0 !important;
+    padding-top: 40px !important;
+  }
+  
+  /* Even smaller text on small mobile */
+  html body #home * {
+    font-size: 0.7rem !important;
+  }
+  
+  html body #home h1,
+  html body #home h2,
+  html body #home h3,
+  html body #home h4,
+  html body #home h5,
+  html body #home h6 {
+    font-size: 0.8rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  html body #home .font-wedding-day {
+    font-size: 1.1rem !important;
+    line-height: 1.1 !important;
+  }
+  
+  html body #home .font-esthetic {
+    font-size: 0.8rem !important;
+  }
+  
+  html body #home .font-date {
+    font-size: 0.6rem !important;
+  }
+  
+  html body #home p,
+  html body #home span,
+  html body #home div {
+    font-size: 0.6rem !important;
+  }
+}
+
+/* Ultra high specificity for ALL mobile devices */
+@media (max-width: 1024px) {
+  /* Force mobile layout for all tablets and phones */
+  html body #home .container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  
+  /* Force smaller text with maximum specificity */
+  html body #home * {
+    font-size: 0.9rem !important;
+  }
+  
+  html body #home h1,
+  html body #home h2,
+  html body #home h3,
+  html body #home h4,
+  html body #home h5,
+  html body #home h6 {
+    font-size: 1rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  html body #home .font-wedding-day {
+    font-size: 1.4rem !important;
+    line-height: 1.1 !important;
+  }
+  
+  html body #home .font-esthetic {
+    font-size: 1rem !important;
+  }
+  
+  html body #home .font-date {
+    font-size: 0.8rem !important;
+  }
+  
+  html body #home p,
+  html body #home span,
+  html body #home div {
+    font-size: 0.8rem !important;
+  }
+  
+  /* Make sections below home overlap and cover home section */
+  html body section:not(#home) {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-top: -50px !important;
+    background: white !important;
+    border-radius: 20px 20px 0 0 !important;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Specifically target love story section */
+  html body #love-story,
+  html body section[data-section="love-story"],
+  html body .love-story-section {
+    position: relative !important;
+    z-index: 15 !important;
+    margin-top: -80px !important;
+    background: white !important;
+    border-radius: 25px 25px 0 0 !important;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15) !important;
+    padding-top: 30px !important;
+  }
+  
+  html body #home .row {
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  html body #home .col {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 0 !important;
+  }
+  
+  html body #home .position-relative {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  /* Force center all text content */
+  html body #home .text-content-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 95% !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 20px !important;
+  }
+  
+  /* Force center all text elements */
+  html body #home h1, 
+  html body #home h2, 
+  html body #home h3, 
+  html body #home h4, 
+  html body #home h5, 
+  html body #home h6 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    width: 100% !important;
+  }
+  
+  html body #home p, 
+  html body #home span, 
+  html body #home div {
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Force center buttons */
+  html body #home .btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    width: auto !important;
+    min-width: 200px !important;
+  }
+  
+  /* Force center couple names */
+  html body #home .couple-names-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  /* Force mobile text sizes - smaller for mobile */
+  html body #home h1, 
+  html body #home h2, 
+  html body #home h3 {
+    font-size: 1.2rem !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Wedding Day title - much smaller on mobile */
+  html body #home h1.font-wedding-day {
+    font-size: 1.8rem !important;
+    line-height: 1.1 !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Couple names - smaller on mobile */
+  html body #home .font-esthetic {
+    font-size: 1.3rem !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Date size - smaller on mobile */
+  html body #home .font-date {
+    font-size: 1.1rem !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  html body #home p .font-date {
+    font-size: 1.1rem !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Force mobile flower decorations */
+  html body #home img[src*="anhcanhhoa1.png"] {
+    top: -50% !important;
+    right: calc(-70% - 4px) !important;
+    width: 5% !important;
+    height: auto !important;
+    transform: scale(0.3) rotate(-35deg) !important;
+    animation: flowerShake 3s ease-in-out infinite !important;
+  }
+  
+  html body #home img[src*="anhcanhhoa2.png"] {
+    top: -20% !important;
+    left: -40% !important;
+    width: 25% !important;
+    height: auto !important;
+    transform: scale(0.4) rotate(15deg) !important;
+    animation: flowerShake2 3s ease-in-out infinite !important;
+  }
+  
+  /* Hide canhhoa3 and canhhoa4 */
+  html body #home img[src*="anhcanhhoa3.png"] {
+    display: none !important;
+  }
+  
+  html body #home img[src*="anhcanhhoa4.png"] {
+    display: none !important;
+  }
 }
 
 /* Google Calendar button - white border, no hover effect */
@@ -437,6 +1080,95 @@ html[data-bs-theme="dark"] .bg-white-black {
 @media screen and (max-width: 576px) {
     .width-loading {
         width: 75%;
+    }
+    
+    /* Extra mobile centering for very small screens */
+    #home .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    #home .text-content-container {
+        max-width: 95% !important;
+        padding: 0 10px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        transform: none !important;
+    }
+    
+    #home .couple-names-container {
+        max-width: 95% !important;
+        padding: 0 10px !important;
+    }
+    
+    #home h1, #home h2, #home h3 {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+        text-align: center !important;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    /* Wedding Day title - double size on mobile */
+    #home h1.font-wedding-day {
+        font-size: 3rem !important;
+        line-height: 1.1 !important;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    #home .font-esthetic {
+        font-size: 2rem !important;
+        text-align: center !important;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    #home .font-date {
+        font-size: 1.2rem !important;
+        text-align: center !important;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    #home .btn {
+        width: auto !important;
+        min-width: 200px !important;
+        margin: 10px auto !important;
+        display: block !important;
+    }
+    
+    /* Mobile positioning for flower decorations */
+    /* Canhhoa1 - top right - override inline styles on small mobile */
+    img[src*="anhcanhhoa1.png"] {
+        top: -50% !important;
+        right: calc(-70% - 4px) !important;
+        width: 5% !important;
+        height: auto !important;
+        transform: scale(0.25) rotate(-35deg) !important;
+        animation: flowerShake 3s ease-in-out infinite !important;
+    }
+    
+    /* Canhhoa2 - top left */
+    img[src*="anhcanhhoa2.png"] {
+        top: -25% !important;
+        left: -45% !important;
+        width: 20% !important;
+        height: auto !important;
+        transform: scale(0.35) rotate(15deg) !important;
+        animation: flowerShake2 3s ease-in-out infinite !important;
+    }
+    
+    /* Canhhoa3 - bottom right */
+    img[src*="anhcanhhoa3.png"] {
+        bottom: -20% !important;
+        right: -20% !important;
+        width: 18% !important;
+        height: auto !important;
+    }
+    
+    /* Canhhoa4 - bottom left */
+    img[src*="anhcanhhoa4.png"] {
+        bottom: -15% !important;
+        left: -15% !important;
+        width: 22% !important;
+        height: auto !important;
     }
 }
 
