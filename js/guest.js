@@ -216,14 +216,22 @@
         }
     };
 
-    // ============ GENERATE GALLERY ITEMS ============
+    // ============ GENERATE GALLERY ITEMS - OPTIMIZED ============
     const generateGalleryItems = (container) => {
+        // Use DocumentFragment for better performance
+        const fragment = document.createDocumentFragment();
+        
         // Generate 25 main images
         for (let i = 1; i <= 25; i++) {
             const item = document.createElement('div');
             item.className = 'gallery-item';
-            item.innerHTML = `<img src="../assets/images/anhcuoi${i}.jpg" alt="anhcuoi${i}" class="rounded-4 shadow cursor-pointer" onclick="undangan.guest.modal(this)" />`;
-            container.appendChild(item);
+            const img = document.createElement('img');
+            img.src = `../assets/images/anhcuoi${i}.jpg`;
+            img.alt = `anhcuoi${i}`;
+            img.className = 'rounded-4 shadow cursor-pointer';
+            img.onclick = () => undangan.guest.modal(img);
+            item.appendChild(img);
+            fragment.appendChild(item);
         }
         
         // Add some duplicate images for variety (like in original album)
@@ -231,15 +239,28 @@
             const k = ((j - 1) % 25) + 1;
             const clone = document.createElement('div');
             clone.className = 'gallery-item';
-            clone.innerHTML = `<img src="../assets/images/anhcuoi${k}.jpg" alt="anhcuoi${k}" class="rounded-4 shadow cursor-pointer" onclick="undangan.guest.modal(this)" />`;
-            container.appendChild(clone);
+            const img = document.createElement('img');
+            img.src = `../assets/images/anhcuoi${k}.jpg`;
+            img.alt = `anhcuoi${k}`;
+            img.className = 'rounded-4 shadow cursor-pointer';
+            img.onclick = () => undangan.guest.modal(img);
+            clone.appendChild(img);
+            fragment.appendChild(clone);
         }
         
         // Add one more
         const extra = document.createElement('div');
         extra.className = 'gallery-item';
-        extra.innerHTML = `<img src="../assets/images/anhcuoi1.jpg" alt="anhcuoi1" class="rounded-4 shadow cursor-pointer" onclick="undangan.guest.modal(this)" />`;
-        container.appendChild(extra);
+        const extraImg = document.createElement('img');
+        extraImg.src = '../assets/images/anhcuoi1.jpg';
+        extraImg.alt = 'anhcuoi1';
+        extraImg.className = 'rounded-4 shadow cursor-pointer';
+        extraImg.onclick = () => undangan.guest.modal(extraImg);
+        extra.appendChild(extraImg);
+        fragment.appendChild(extra);
+        
+        // Append all at once for better performance
+        container.appendChild(fragment);
     };
 
     // ============ TOAST NOTIFICATION ============

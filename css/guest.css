@@ -27,33 +27,7 @@ section:last-of-type { margin-bottom: 0 !important; }
 #comment .letter-form::before { background: none !important; }
 
 /* Custom Fonts */
-@font-face {
-  font-family: 'Huova Demo Light';
-  src: url('../font/HuovaDemo-Light.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'UTM Beautiful Caps';
-  src: url('../font/UTM-Beautiful-Caps.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Montserrat Light';
-  src: url('../font/Montserrat Light.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'TH Maginia';
-  src: url('../font/TH Maginia.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+/* Custom fonts removed - not used in current design */
 
 /* Custom Wedding Color Palette */
 :root {
@@ -65,6 +39,40 @@ section:last-of-type { margin-bottom: 0 !important; }
     --wedding-light: #f0f5e6;       /* Màu nền sáng xanh nhạt */
     --wedding-gradient: linear-gradient(135deg, var(--wedding-primary), var(--wedding-secondary));
     --wedding-gradient-accent: linear-gradient(135deg, var(--wedding-accent), var(--wedding-tertiary));
+}
+
+/* Performance optimizations */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Optimize images */
+img {
+    max-width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Override for flower decorations - allow any size */
+img[src*="anhcanhhoa"] {
+    max-width: none !important;
+    max-height: none !important;
+}
+
+/* Reduce paint operations */
+.btn, .gallery-item, .nav-link {
+    contain: layout style paint;
 }
 
 /* Remove any default top spacing and ensure hero sticks to top */
@@ -343,7 +351,8 @@ h1, h2, h3 {
     margin-bottom: 1rem;
     border-radius: 1rem;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    will-change: transform, box-shadow;
 }
 
 /* Landscape modifier not needed for grid; keep width 100% */
@@ -360,7 +369,8 @@ h1, h2, h3 {
     display: block;
     object-fit: contain;
     object-position: center;
-    transition: transform 0.5s ease, filter 0.3s ease;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    will-change: transform, filter;
 }
 
 .gallery-item:hover img {
@@ -456,12 +466,13 @@ html[data-bs-theme="dark"] #navbar-menu {
 
 #navbar-menu .nav-link, #navbar-menu .btn {
     padding: 0.75rem 0.5rem !important;
-    transition: all 0.3s ease;
+    transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
     border-radius: 0.5rem;
     margin: 0.25rem;
     color: var(--wedding-dark) !important;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    will-change: transform, background-color, color, box-shadow;
 }
 
 #navbar-menu .nav-link:hover, #navbar-menu .btn:hover {
@@ -500,7 +511,7 @@ html[data-bs-theme="dark"] #navbar-menu .btn {
     }
 }
 
-/* Wedding Button Styles */
+/* Wedding Button Styles - Optimized for performance */
 .btn-wedding-primary {
     background: var(--wedding-gradient) !important;
     border: none !important;
@@ -509,11 +520,12 @@ html[data-bs-theme="dark"] #navbar-menu .btn {
     padding: 0.75rem 2rem;
     border-radius: 2rem;
     box-shadow: 0 6px 20px rgba(191, 142, 78, 0.4);
-    transition: all 0.3s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    will-change: transform, box-shadow;
 }
 
 .btn-wedding-primary:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(191, 142, 78, 0.6);
     color: white !important;
 }
@@ -580,23 +592,7 @@ canvas {
     pointer-events: none;
 }
 
-/* Gentle snow animation for canvas particles */
-@keyframes gentleSnowfall {
-    0% {
-        opacity: 0;
-        transform: translateY(-100vh) rotate(0deg);
-    }
-    10% {
-        opacity: 0.7;
-    }
-    90% {
-        opacity: 0.7;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(100vh) rotate(360deg);
-    }
-}
+/* Snow animation removed - not used */
 
 /* Glowing Border Animation */
 @keyframes glowingBorder {
@@ -763,29 +759,9 @@ canvas {
     filter: sepia(0.3) saturate(0.8) hue-rotate(10deg);
 }
 
-/* Large grass (front) */
-.grass-large {
-    width: 120px;
-    height: 200px;
-    z-index: 3;
-    opacity: 0.7;
-}
+/* Grass large removed - not used */
 
-/* Medium grass (middle) */
-.grass-medium {
-    width: 90px;
-    height: 150px;
-    z-index: 2;
-    opacity: 0.5;
-}
-
-/* Small grass (back) */
-.grass-small {
-    width: 60px;
-    height: 100px;
-    z-index: 1;
-    opacity: 0.3;
-}
+/* Grass medium and small removed - not used */
 
 /* Left side grass */
 .grass-left-1 {
@@ -842,12 +818,7 @@ canvas {
 }
 
 @media screen and (max-width: 768px) {
-    /* Mobile responsive grass sizes */
-    .grass-large {
-        width: 80px;
-        height: 140px;
-        opacity: 0.5;
-    }
+    /* Mobile responsive grass sizes - grass-large removed */
     
     .grass-medium {
         width: 60px;
@@ -1443,40 +1414,7 @@ svg {
     margin-bottom: -0.75rem !important;
 }
 
-/* Big Love Heart in Center - Desktop Only */
-.big-love-heart {
-    font-size: 8rem;
-    animation: heartBeatLove 1.5s ease-in-out infinite, floatHeart 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px rgba(237, 156, 102, 0.6));
-    text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.8),
-        0 0 20px var(--wedding-accent),
-        0 0 30px var(--wedding-secondary);
-}
-
-@keyframes heartBeatLove {
-    0%, 100% {
-        transform: scale(1);
-    }
-    25% {
-        transform: scale(1.15);
-    }
-    50% {
-        transform: scale(1);
-    }
-    75% {
-        transform: scale(1.1);
-    }
-}
-
-@keyframes floatHeart {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-}
+/* Big love heart removed - not used */
 
 @media (min-width: 992px) {
     /* Desktop: spread bride/groom columns wider with big middle gap */
@@ -1613,26 +1551,7 @@ svg {
 
 .photo-frame-container { position: relative; }
 
-/* Flower overlay on top of circle photos */
-.photo-flowers {
-  position: absolute;
-  left: -1.125%;
-  transform: translateX(-50%);
-  bottom: -18px;
-  width: 240px;
-  opacity: 1; /* fully clear */
-  filter: none;
-  z-index: 3;
-  pointer-events: none;
-  animation: flowerFloat 5s ease-in-out infinite;
-}
-@media (min-width: 992px) { 
-  .photo-flowers { width: 300px; bottom: -20px; }
-}
-@keyframes flowerFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.35; }
-  50% { transform: translateY(-8px) rotate(2deg); opacity: 0.5; }
-}
+/* Photo flowers removed - not used */
 
 /* Fancy button font for Google Calendar & Maps */
 .btn-fancy {
@@ -1663,13 +1582,12 @@ svg {
 }
 
 .reveal { opacity: 0; transform: translateY(20px); }
-.reveal.show { opacity: 1; transform: none; transition: all .7s ease; }
-.reveal.fly-left.show { animation: flyInLeft .8s ease both; }
-.reveal.fly-right.show { animation: flyInRight .8s ease both; }
-.reveal.fade-up.show { animation: fadeUp .8s ease both; }
+.reveal.show { opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.3s ease; }
+.reveal.fly-left.show { animation: flyInLeft 0.4s ease both; }
+.reveal.fly-right.show { animation: flyInRight 0.4s ease both; }
+.reveal.fade-up.show { animation: fadeUp 0.4s ease both; }
 
-/* Disable sparkle dots around photo */
-.photo-frame-sparkle, .sparkle-dot { display: none !important; }
+/* Sparkle dots removed - not used */
 
 /* Wave color sync helpers */
 html[data-bs-theme="dark"] .wave-dark-to-black { color: rgb(var(--bs-dark-rgb)); background-color: rgb(var(--bs-black-rgb)); }
@@ -1875,25 +1793,12 @@ img[src$="anhcanhhoa4.png"] {
     font-size: 1.1rem !important;
   }
   
-  /* Điều chỉnh flower decorations cho mobile */
-  img[src$="anhcanhhoa1.png"] {
-    width: 25px !important;
-    height: 25px !important;
-  }
-  
-  img[src$="anhcanhhoa2.png"] {
-    width: 30px !important;
-    height: 30px !important;
-  }
-  
-  img[src$="anhcanhhoa3.png"] {
-    width: 40px !important;
-    height: 40px !important;
-  }
-  
-  img[src$="anhcanhhoa4.png"] {
-    width: 45px !important;
-    height: 45px !important;
+  /* Flower decorations - responsive positioning */
+  img[src*="anhcanhhoa"] {
+    max-width: none !important;
+    max-height: none !important;
+    width: auto !important;
+    height: auto !important;
   }
 }
 html[data-bs-theme="light"] .couple-names-title {
