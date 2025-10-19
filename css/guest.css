@@ -904,25 +904,25 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   color: white !important;
 }
 
-/* Info buttons in money gift section - white border, no hover effect */
+/* Info buttons in money gift section - white border, black text */
 .info-btn {
   border: 2px solid white !important;
-  color: white !important;
+  color: #000000 !important;
   background: transparent !important;
 }
 
 .info-btn i {
-  color: white !important;
+  color: #000000 !important;
 }
 
 .info-btn:hover {
   border: 2px solid white !important;
-  color: white !important;
+  color: #000000 !important;
   background: transparent !important;
 }
 
 .info-btn:hover i {
-  color: white !important;
+  color: #000000 !important;
 }
 
 html {
