@@ -275,7 +275,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   
   /* Reduce date size on mobile */
   #home .font-date {
-    font-size: 1.4rem !important;
+    font-size: 2.8rem !important;
     text-align: center !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
   }
@@ -409,11 +409,11 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   
   /* Force date size on mobile with high specificity */
   html body #home .font-date {
-    font-size: 1.4rem !important;
+    font-size: 2.8rem !important;
   }
   
   html body #home p .font-date {
-    font-size: 1.4rem !important;
+    font-size: 2.8rem !important;
   }
 }
 
@@ -495,7 +495,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   
   /* Reduce text sizes on iPad */
   #home h1, #home h2, #home h3 {
-    font-size: 1.5rem !important;
+    font-size: 3rem !important;
     line-height: 1.2 !important;
     text-align: center !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
@@ -503,24 +503,24 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   
   /* Wedding Day title - smaller on iPad */
   #home h1.font-wedding-day {
-    font-size: 2.5rem !important;
+    font-size: 5rem !important;
     line-height: 1.1 !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
   }
   
   #home .font-esthetic {
-    font-size: 1.8rem !important;
+    font-size: 3.6rem !important;
     text-align: center !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
   }
   
   /* Date size on iPad */
   html body #home .font-date {
-    font-size: 1.6rem !important;
+    font-size: 3.2rem !important;
   }
   
   html body #home p .font-date {
-    font-size: 1.6rem !important;
+    font-size: 3.2rem !important;
   }
   
   /* Flower decorations on iPad */
@@ -558,32 +558,32 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   html body #home h1, 
   html body #home h2, 
   html body #home h3 {
-    font-size: 1rem !important;
+    font-size: 2rem !important;
     line-height: 1.2 !important;
   }
   
   /* Wedding Day title - smaller on small mobile */
   html body #home h1.font-wedding-day {
-    font-size: 1.5rem !important;
+    font-size: 3rem !important;
     line-height: 1.1 !important;
   }
   
   /* Couple names - smaller on small mobile */
   html body #home .font-esthetic {
-    font-size: 1.1rem !important;
+    font-size: 2.2rem !important;
   }
   
   /* Date size - smaller on small mobile */
   html body #home .font-date {
-    font-size: 0.9rem !important;
+    font-size: 1.8rem !important;
   }
   
   html body #home p .font-date {
-    font-size: 0.9rem !important;
+    font-size: 1.8rem !important;
   }
   
   html body #home span .font-date {
-    font-size: 0.9rem !important;
+    font-size: 1.8rem !important;
   }
   
   /* Proper spacing on small mobile */
@@ -608,7 +608,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   
   /* Even smaller text on small mobile */
   html body #home * {
-    font-size: 0.7rem !important;
+    font-size: 1.4rem !important;
   }
   
   html body #home h1,
@@ -617,27 +617,32 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   html body #home h4,
   html body #home h5,
   html body #home h6 {
-    font-size: 0.8rem !important;
+    font-size: 1.6rem !important;
     line-height: 1.2 !important;
   }
   
   html body #home .font-wedding-day {
-    font-size: 1.1rem !important;
+    font-size: 2.2rem !important;
     line-height: 1.1 !important;
   }
   
   html body #home .font-esthetic {
-    font-size: 0.8rem !important;
+    font-size: 1.6rem !important;
   }
   
   html body #home .font-date {
-    font-size: 0.6rem !important;
+    font-size: 1.2rem !important;
   }
   
   html body #home p,
   html body #home span,
   html body #home div {
-    font-size: 0.6rem !important;
+    font-size: 1.2rem !important;
+  }
+  
+  /* Keep Google Calendar button original size */
+  html body #home .btn-fancy[onclick*="saveToGoogleCalendar"] {
+    font-size: 1rem !important;
   }
 }
 
@@ -658,7 +663,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   
   /* Force smaller text with maximum specificity */
   html body #home * {
-    font-size: 0.9rem !important;
+    font-size: 1.8rem !important;
   }
   
   html body #home h1,
@@ -667,27 +672,32 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   html body #home h4,
   html body #home h5,
   html body #home h6 {
-    font-size: 1rem !important;
+    font-size: 2rem !important;
     line-height: 1.2 !important;
   }
   
   html body #home .font-wedding-day {
-    font-size: 1.4rem !important;
+    font-size: 2.8rem !important;
     line-height: 1.1 !important;
   }
   
   html body #home .font-esthetic {
-    font-size: 1rem !important;
+    font-size: 2rem !important;
   }
   
   html body #home .font-date {
-    font-size: 0.8rem !important;
+    font-size: 1.6rem !important;
   }
   
   html body #home p,
   html body #home span,
   html body #home div {
-    font-size: 0.8rem !important;
+    font-size: 1.6rem !important;
+  }
+  
+  /* Keep Google Calendar button original size */
+  html body #home .btn-fancy[onclick*="saveToGoogleCalendar"] {
+    font-size: 1rem !important;
   }
   
   /* Proper spacing between sections on mobile */
@@ -804,7 +814,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   html body #home h1, 
   html body #home h2, 
   html body #home h3 {
-    font-size: 1.2rem !important;
+    font-size: 2.4rem !important;
     line-height: 1.2 !important;
     text-align: center !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
@@ -812,29 +822,34 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   
   /* Wedding Day title - much smaller on mobile */
   html body #home h1.font-wedding-day {
-    font-size: 1.8rem !important;
+    font-size: 3.6rem !important;
     line-height: 1.1 !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
   }
   
   /* Couple names - smaller on mobile */
   html body #home .font-esthetic {
-    font-size: 1.3rem !important;
+    font-size: 2.6rem !important;
     text-align: center !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
   }
   
   /* Date size - smaller on mobile */
   html body #home .font-date {
-    font-size: 1.1rem !important;
+    font-size: 2.2rem !important;
     text-align: center !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
   }
   
   html body #home p .font-date {
-    font-size: 1.1rem !important;
+    font-size: 2.2rem !important;
     text-align: center !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Keep Google Calendar button original size */
+  html body #home .btn-fancy[onclick*="saveToGoogleCalendar"] {
+    font-size: 1rem !important;
   }
   
   /* Force mobile flower decorations */
@@ -871,6 +886,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   border: 2px solid white !important;
   color: white !important;
   background: transparent !important;
+  font-size: 1rem !important; /* Keep original size for Google Calendar button */
 }
 
 .btn-fancy[onclick*="saveToGoogleCalendar"] i {
@@ -881,6 +897,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   border: 2px solid white !important;
   color: white !important;
   background: transparent !important;
+  font-size: 1rem !important; /* Keep original size on hover */
 }
 
 .btn-fancy[onclick*="saveToGoogleCalendar"]:hover i {
@@ -1114,7 +1131,7 @@ html[data-bs-theme="dark"] .bg-white-black {
     }
     
     #home h1, #home h2, #home h3 {
-        font-size: 1.5rem !important;
+        font-size: 3rem !important;
         line-height: 1.2 !important;
         text-align: center !important;
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
@@ -1122,21 +1139,26 @@ html[data-bs-theme="dark"] .bg-white-black {
     
     /* Wedding Day title - double size on mobile */
     #home h1.font-wedding-day {
-        font-size: 3rem !important;
+        font-size: 6rem !important;
         line-height: 1.1 !important;
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
     }
     
     #home .font-esthetic {
-        font-size: 2rem !important;
+        font-size: 4rem !important;
         text-align: center !important;
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
     }
     
     #home .font-date {
-        font-size: 1.2rem !important;
+        font-size: 2.4rem !important;
         text-align: center !important;
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    /* Keep Google Calendar button original size */
+    #home .btn-fancy[onclick*="saveToGoogleCalendar"] {
+        font-size: 1rem !important;
     }
     
     #home .btn {
@@ -2302,6 +2324,7 @@ svg {
   font-family: 'Playfair Display', serif !important;
   font-weight: 600 !important;
   letter-spacing: .5px;
+  font-size: 1rem !important; /* Keep original size */
 }
 
 /* Guest name highlight */
