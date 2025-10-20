@@ -946,6 +946,19 @@ html {
     font-weight: normal !important;
 }
 
+/* Desktop styling for Wedding Day - move to right and increase size 2x */
+@media (min-width: 1025px) {
+  #home h1.font-wedding-day {
+    font-size: 7rem !important; /* 2x larger than mobile */
+    line-height: 1.1 !important;
+    text-align: right !important; /* Move to right */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    padding-right: 2rem !important;
+  }
+}
+
 .font-arabic {
     font-family: 'Inter', sans-serif !important;
 }
