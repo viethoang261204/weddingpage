@@ -417,7 +417,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   }
 }
 
-/* iPad layout - force mobile style */
+/* Mobile and iPad layout - combined */
 @media (max-width: 1024px) {
   /* Center all elements in home section on iPad */
   #home .container {
@@ -451,7 +451,12 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
     text-align: center !important;
   }
   
-  /* Center text content container on iPad */
+  /* Change background image for mobile and iPad */
+  #home .bg-cover-home {
+    content: url('../assets/images/anhcuoi212.jpg') !important;
+  }
+  
+  /* Center text content container for mobile and iPad */
   #home .text-content-container {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -2545,22 +2550,22 @@ img[src$="anhcanhhoa4.png"] {
   animation: flowerSway4 3.5s ease-in-out infinite;
 }
 
-/* Mobile responsive - chỉ áp dụng cho điện thoại */
-@media (max-width: 767px) {
-  /* Giữ nguyên layout desktop, chỉ scale nhỏ lại cho mobile */
+/* Bride section responsive - for mobile and iPad */
+@media (max-width: 1024px) {
+  /* Giữ nguyên layout desktop, chỉ scale nhỏ lại cho mobile/iPad */
   #bride {
     margin-top: 4rem !important;
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
   }
   
-  /* Scale toàn bộ section bride cho mobile */
+  /* Scale toàn bộ section bride cho mobile/iPad */
   #bride .d-none.d-md-block {
     transform: scale(0.8);
     transform-origin: center top;
   }
   
-  /* Điều chỉnh font size cho mobile */
+  /* Điều chỉnh font size cho mobile/iPad */
   #bride .center-couple-title h2 {
     font-size: 2.5rem !important;
   }
@@ -2579,6 +2584,72 @@ img[src$="anhcanhhoa4.png"] {
     max-height: none !important;
     width: auto !important;
     height: auto !important;
+  }
+}
+
+/* iPad specific - vertical layout for bride section */
+@media (max-width: 1024px) and (min-width: 768px) {
+  /* Force vertical layout on iPad */
+  #bride .row.g-0 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 6rem !important; /* Double spacing between elements */
+  }
+  
+  #bride .row.g-0 > .col-6 {
+    flex: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-bottom: 4rem !important; /* Double spacing below each column */
+  }
+  
+  /* Extra spacing for bride image (last column) */
+  #bride .row.g-0 > .col-6:last-child {
+    margin-top: 6rem !important; /* Extra spacing above bride image */
+    margin-bottom: 0 !important; /* Remove bottom margin for last element */
+  }
+  
+  /* Center content on iPad */
+  #bride .text-center {
+    text-align: center !important;
+    margin: 4rem 0 !important; /* Double vertical margin around text */
+  }
+  
+  /* Extra spacing below text center (before bride image) */
+  #bride .text-center {
+    margin-bottom: 8rem !important; /* Extra spacing below date text */
+  }
+  
+  /* Adjust spacing for iPad */
+  #bride {
+    margin-top: 4rem !important;
+    padding-top: 6rem !important; /* Double padding top */
+    padding-bottom: 6rem !important; /* Double padding bottom */
+  }
+  
+  /* Scale content for iPad */
+  #bride .d-none.d-md-block {
+    transform: scale(0.9) !important;
+    transform-origin: center top !important;
+  }
+  
+  /* Font sizes for iPad */
+  #bride .center-couple-title h2 {
+    font-size: 2.8rem !important;
+    margin-bottom: 1rem !important; /* Reduce spacing below title */
+  }
+  
+  #bride .center-couple-title .font-esthetic {
+    font-size: 2.2rem !important;
+    margin-bottom: 0.5rem !important; /* Reduce spacing below names */
+  }
+  
+  #bride .headline-couple {
+    font-size: 1.2rem !important;
+    margin-top: 0.5rem !important; /* Reduce spacing above date */
   }
 }
 html[data-bs-theme="light"] .couple-names-title {
