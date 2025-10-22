@@ -465,9 +465,9 @@
                   class="font-esthetic text-center py-2 mb-2"
                   style="font-size: 3rem"
                 >
-                  Câu chuyện tình yêu
+                  Gặp nhau là định mệnh, yêu nhau là lựa chọn.
                 </h2>
-                <div id="video-love-stroy" class="rounded-4 mb-2" data-src="../assets/video/265501_tiny.mp4" data-vid-class="w-80 rounded-4 shadow-sm m-0 p-0"></div>
+                <div id="video-love-stroy" class="rounded-4 mb-2" data-src="../assets/video/video.mp4" data-vid-class="w-80 rounded-4 shadow-sm m-0 p-0"></div>
 
                 <div class="position-relative">
                   <div class="p-2">
@@ -482,7 +482,7 @@
                         </p>
 
                         <p class="small mb-0">
-                          Chúng tôi gặp nhau lần đầu vào một ngày đẹp trời, và từ đó tình yêu bắt đầu nảy nở.
+                           Từ ngày 25.08.2023, hai trái tim khác biệt – một bên ương bướng nhưng lại đáng yêu chẳng thể giận lâu, một bên trông "hổ báo" mà lại dịu dàng – đã tìm thấy nhau giữa cuộc đời.
                         </p>
                       </div>
 
@@ -496,7 +496,7 @@
                           <span style="display: inline-block; width: 2px; height: 20px; background-color: #000; flex-shrink: 0;"></span>
                           <span style="flex-shrink: 0;">Tình yêu nảy nở</span>
                         </p>
-                        <p class="small mb-0">Qua thời gian tìm hiểu, chúng tôi nhận ra rằng mình là người dành cho nhau.</p>
+                        <p class="small mb-0">Qua bao lần giận, dỗ, thương, chúng mình nhận ra: chỉ cần có nhau là đủ bình yên.</p>
                       </div>
                     </div>
                     <div class="row">
@@ -510,7 +510,7 @@
                           <span style="display: inline-block; width: 2px; height: 20px; background-color: #000; flex-shrink: 0;"></span>
                           <span style="flex-shrink: 0;">Quyết định về chung 1 nhà</span>
                         </p>
-                        <p class="small mb-0">Và giờ đây, chúng tôi sẵn sàng bước vào hôn nhân để cùng nhau xây dựng tổ ấm hạnh phúc.</p>
+                        <p class="small mb-0">Và hôm nay, hành trình ấy bước sang chương mới – “chúng ta” chính thức về chung một nhà.</p>
                       </div>
                     </div>
                   </div>
@@ -920,7 +920,7 @@
                         <label for="wishPresence" class="form-label">
                           <i class="fa-solid fa-calendar-check"></i> Xác nhận tham dự
                         </label>
-                        <select class="form-select rounded-3 letter-input" id="wishPresence" required>
+                        <select class="form-select rounded-3 letter-input" id="wishPresence" required onchange="toggleDaySelect()">
                           <option value="yes">✅ Tôi sẽ đến</option>
                           <option value="no">❌ Rất tiếc không thể tham dự</option>
                           <option value="maybe">🤔 Chưa chắc chắn</option>
@@ -928,7 +928,20 @@
                         </div>
                       </div>
                       
-                      <div class="mb-3">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                        <label for="wishDay" class="form-label">
+                          <i class="fa-solid fa-calendar-days"></i> Ngày tham dự
+                        </label>
+                        <select class="form-select rounded-3 letter-input" id="wishDay" required>
+                          <option value="">-- Chọn ngày tham dự --</option>
+                          <option value="31/10">🏠 Tôi sẽ đến nhà gái ngày 31/10</option>
+                          <option value="01/11">💒 Tôi sẽ đến hôn lễ ngày 01/11</option>
+                          <option value="both">🎉 Tôi sẽ đến cả hai ngày</option>
+                        </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
                         <label for="wishMessage" class="form-label">
                           <i class="fa-solid fa-message"></i> Lời chúc của bạn
                         </label>
@@ -939,6 +952,7 @@
                           placeholder="Viết lời chúc của bạn tại đây..."
                           required
                         ></textarea>
+                        </div>
                       </div>
                       
                       <div class="text-center pb-4">

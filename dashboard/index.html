@@ -447,7 +447,7 @@
 
         async function loadWishes() {
             try {
-                const url = SUPABASE_URL + '/rest/v1/' + SUPABASE_TABLE + '?select=id,name,message,status,created_at&order=created_at.desc';
+                const url = SUPABASE_URL + '/rest/v1/' + SUPABASE_TABLE + '?select=id,name,message,status,day_join,created_at&order=created_at.desc';
                 const resp = await fetch(url, {
                     headers: {
                         'apikey': SUPABASE_ANON_KEY,
@@ -464,7 +464,7 @@
                     name: r.name || 'Ẩn danh',
                     presence: r.status === 'Có đến' ? 'yes' : r.status === 'Không đến' ? 'no' : 'maybe',
                     message: r.message || '',
-                    guestInvited: '',
+                    dayJoin: r.day_join || '',
                     createdAt: new Date(r.created_at).toLocaleString('vi-VN')
                 }));
             } catch (err) {
@@ -482,6 +482,15 @@
             document.getElementById('yesCount').textContent = wishes.filter(w => w.presence === 'yes').length;
             document.getElementById('noCount').textContent = wishes.filter(w => w.presence === 'no').length;
             document.getElementById('maybeCount').textContent = wishes.filter(w => w.presence === 'maybe').length;
+        }
+        
+        function getDayJoinText(dayJoin) {
+            switch(dayJoin) {
+                case '31/10': return '🏠 Nhà gái (31/10)';
+                case '01/11': return '💒 Hôn lễ (01/11)';
+                case 'both': return '🎉 Cả hai ngày';
+                default: return dayJoin;
+            }
         }
         
         function renderWishes() {
@@ -545,7 +554,7 @@
                             <div>
                                 <small>
                                     <i class="fa-solid fa-clock"></i> ${wish.createdAt}
-                                    ${wish.guestInvited !== 'Unknown' ? `<br><i class="fa-solid fa-envelope"></i> Link gửi: ${wish.guestInvited}` : ''}
+                                    ${wish.dayJoin ? `<br><i class="fa-solid fa-calendar-days"></i> Ngày tham dự: ${getDayJoinText(wish.dayJoin)}` : ''}
                                 </small>
                             </div>
                             <div class="wish-actions">
@@ -690,13 +699,13 @@
             }
             
             // Create CSV content
-            const headers = ['STT', 'Tên', 'Tham dự', 'Lời chúc', 'Link gửi', 'Thời gian'];
+            const headers = ['STT', 'Tên', 'Tham dự', 'Ngày tham dự', 'Lời chúc', 'Thời gian'];
             const rows = wishes.map((wish, index) => [
                 index + 1,
                 `"${wish.name}"`,
                 wish.presence === 'yes' ? 'Có' : wish.presence === 'no' ? 'Không' : 'Chưa chắc',
+                `"${getDayJoinText(wish.dayJoin)}"`,
                 `"${wish.message.replace(/"/g, '""')}"`,
-                `"${wish.guestInvited}"`,
                 `"${wish.createdAt}"`
             ]);
             

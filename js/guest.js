@@ -32,6 +32,7 @@
         player: null,
         button: null,
         isPlaying: false,
+        video: null,
 
         init: () => {
             const url = document.body.getAttribute('data-audio');
@@ -52,6 +53,11 @@
             audio.player.play().then(() => {
                 audio.isPlaying = true;
                 audio.button.innerHTML = '<i class="fa-solid fa-circle-pause spin-button"></i>';
+                
+                // Mute video when background music plays
+                if (audio.video) {
+                    audio.video.muted = true;
+                }
             }).catch(err => console.log('Audio play failed:', err));
         },
 
@@ -65,6 +71,20 @@
 
         toggle: () => {
             audio.isPlaying ? audio.pause() : audio.play();
+        },
+
+        setVideo: (videoElement) => {
+            audio.video = videoElement;
+            
+            // Add event listener to video for mute/unmute
+            if (audio.video) {
+                audio.video.addEventListener('volumechange', () => {
+                    // If video is unmuted, pause background music
+                    if (!audio.video.muted && audio.isPlaying) {
+                        audio.pause();
+                    }
+                });
+            }
         }
     };
 
@@ -351,21 +371,46 @@
         const vid = document.createElement('video');
         vid.className = wrap.getAttribute('data-vid-class');
         vid.loop = true;
-        vid.muted = true;
+        vid.muted = audio.isPlaying; // Mute video if background music is playing
         vid.controls = true;
+        vid.controlsList = 'nodownload'; // Allow all controls except download
         vid.playsInline = true;
         vid.src = src;
 
         wrap.appendChild(vid);
         document.getElementById('video-love-stroy-loading')?.remove();
 
-        // Auto play on scroll into view
+        // Connect video to audio controller
+        audio.setVideo(vid);
+
+        // Auto play on scroll into view (but don't interfere with user controls)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                entry.isIntersecting ? vid.play() : vid.pause();
+                if (entry.isIntersecting) {
+                    // Only auto-play if user hasn't interacted with video
+                    if (vid.paused && !vid.ended) {
+                        vid.play().catch(e => console.log('Auto-play failed:', e));
+                    }
+                } else {
+                    // Only pause if user isn't actively using controls
+                    if (!vid.paused && !vid.seeking) {
+                        vid.pause();
+                    }
+                }
             });
         });
         observer.observe(vid);
+
+        // Add event listeners to respect user interaction
+        vid.addEventListener('seeking', () => {
+            // User is seeking/scrubbing, don't auto-pause
+            console.log('User is seeking video');
+        });
+
+        vid.addEventListener('play', () => {
+            // User manually played, respect their choice
+            console.log('User manually played video');
+        });
     };
 
     // ============ CONFETTI ============
@@ -435,6 +480,27 @@
         });
     };
 
+    // ============ TOGGLE DAY SELECT ============
+    const toggleDaySelect = () => {
+        const presenceSelect = document.getElementById('wishPresence');
+        const daySelect = document.getElementById('wishDay');
+        
+        if (!presenceSelect || !daySelect) return;
+        
+        if (presenceSelect.value === 'no') {
+            // Disable day select when "Không thể đến" is selected
+            daySelect.disabled = true;
+            daySelect.value = ''; // Clear the value
+            daySelect.style.opacity = '0.5';
+            daySelect.style.cursor = 'not-allowed';
+        } else {
+            // Enable day select for other options
+            daySelect.disabled = false;
+            daySelect.style.opacity = '1';
+            daySelect.style.cursor = 'pointer';
+        }
+    };
+
     // ============ WISH FORM ============
     const initWishForm = () => {
         const wishForm = document.getElementById('wishForm');
@@ -445,9 +511,14 @@
 
             const name = document.getElementById('wishName').value.trim();
             const presence = document.getElementById('wishPresence').value; // yes | no | maybe
+            const dayJoin = document.getElementById('wishDay').value; // 31/10 | 01/11 | both
             const message = document.getElementById('wishMessage').value.trim();
 
+            // Validate required fields
             if (!name || !message) return;
+            
+            // Only require dayJoin if user is attending
+            if (presence !== 'no' && !dayJoin) return;
 
             // Get decoded guest name
             function decodeGuestName(encoded) {
@@ -476,7 +547,7 @@
                             'apikey': SUPABASE_ANON_KEY,
                             'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
                         },
-                        body: JSON.stringify({ name, message, status })
+                        body: JSON.stringify({ name, message, status, day_join: dayJoin })
                     });
 
                     if (!resp.ok) {
@@ -548,6 +619,9 @@
             preloadGallery
         }
     };
+    
+    // Expose toggleDaySelect function globally
+    window.toggleDaySelect = toggleDaySelect;
 
     // Start when DOM ready
     if (document.readyState === 'loading') {
