@@ -653,7 +653,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
 
 /* Ultra high specificity for ALL mobile devices */
 @media (max-width: 1024px) {
-  /* Force mobile layout for all tablets and phones */
+  /* Force mobile layout for all tablets and phones - BỎ QUA Wedding Day */
   html body #home .container {
     display: flex !important;
     flex-direction: column !important;
@@ -664,6 +664,11 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
     padding: 0 !important;
     position: relative !important;
     z-index: 1 !important;
+  }
+  
+  /* Ẩn Wedding Day trong container vì đã tách riêng */
+  html body #home .container h1.font-wedding-day {
+    display: none !important;
   }
   
   /* Force smaller text with maximum specificity */
@@ -825,11 +830,20 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
   }
   
-  /* Wedding Day title - much smaller on mobile */
+  /* Wedding Day title - TÁCH RIÊNG và đẩy lên sát đầu */
   html body #home h1.font-wedding-day {
+    position: fixed !important;
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     font-size: 3.6rem !important;
     line-height: 1.1 !important;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4) !important;
+    z-index: 1000 !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   
   /* Couple names - smaller on mobile */
