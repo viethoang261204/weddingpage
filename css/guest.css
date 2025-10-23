@@ -662,8 +662,17 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
     text-align: center !important;
     height: 100vh !important;
     padding: 0 !important;
+    margin-top: 200px !important;
     position: relative !important;
     z-index: 1 !important;
+  }
+  
+  /* Override tất cả margin-top rules khác cho container */
+  html body #home .container,
+  html body #home .container-fluid,
+  html body #home .row,
+  html body #home .text-content-container {
+    margin-top: 200px !important;
   }
   
   /* Ẩn Wedding Day trong container vì đã tách riêng */
@@ -832,7 +841,7 @@ section, .bg-white-black, .bg-light-dark, .bg-theme-auto { background-color: #ff
   
   /* Wedding Day title - TÁCH RIÊNG và đẩy lên sát đầu */
   html body #home h1.font-wedding-day {
-    position: fixed !important;
+    position: absolute !important;
     top: 20px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
